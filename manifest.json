@@ -1,0 +1,49 @@
+{
+    "manifest_version": 3,
+    "name": "Mage Mode",
+    "version": "1.0.0",
+    "description": "Transform your X feed into a scrying mirror - divining spells from the Privacymage Grimoire that resonate with your timeline",
+    "permissions": [
+        "storage",
+        "activeTab"
+    ],
+    "host_permissions": [
+        "https://x.com/*",
+        "https://twitter.com/*",
+        "https://api.openai.com/*",
+        "https://api.groq.com/*",
+        "https://cloud-api.near.ai/*",
+        "https://*.near.ai/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/icon16.svg",
+            "48": "icons/icon48.svg",
+            "128": "icons/icon128.svg"
+        }
+    },
+    "icons": {
+        "16": "icons/icon16.svg",
+        "48": "icons/icon48.svg",
+        "128": "icons/icon128.svg"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://x.com/*",
+                "https://twitter.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "styles.css"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}

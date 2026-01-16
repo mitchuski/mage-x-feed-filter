@@ -1,0 +1,465 @@
+﻿/* Mage Mode - Blue Energy Aesthetic */
+
+/* Spell Card Container */
+.mage-spell-card {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%);
+    border: 1px solid rgba(100, 149, 237, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+/* Blue energy glimmer effect */
+.spell-glimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at 50% 0%,
+        rgba(100, 149, 237, 0.15) 0%,
+        transparent 70%
+    );
+    animation: glimmer 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes glimmer {
+    0%, 100% { opacity: 0.5; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(10px); }
+}
+
+/* Spell emoji display */
+.spell-emoji {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 8px rgba(100, 149, 237, 0.5));
+}
+
+/* Proverb styling */
+.spell-proverb {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #e0e0ff;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+/* Spell source info */
+.spell-source {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.spell-title {
+    color: #a0b0d0;
+    font-size: 0.9rem;
+}
+
+/* Spellbook badges */
+.spellbook-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.spellbook-story { background: #4a3a6a; color: #d4af37; }
+.spellbook-zero { background: #0a2a3a; color: #00ffff; }
+.spellbook-canon { background: #3a2a1a; color: #d4a574; }
+.spellbook-parallel { background: #1a3a2a; color: #90ee90; }
+.spellbook-plurality {
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    color: white;
+}
+
+/* Divination message */
+.spell-divination {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #7080a0;
+    margin-bottom: 8px;
+}
+
+.spell-energy {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #6495ed;
+    font-style: italic;
+}
+
+/* Reveal button */
+.reveal-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px;
+    background: rgba(100, 149, 237, 0.1);
+    border: 1px solid rgba(100, 149, 237, 0.3);
+    border-radius: 8px;
+    color: #8090c0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.reveal-button:hover {
+    background: rgba(100, 149, 237, 0.2);
+    color: #a0b0e0;
+    box-shadow: 0 0 20px rgba(100, 149, 237, 0.3);
+}
+
+/* Reveal animation */
+.mage-spell-card.revealing {
+    animation: reveal 0.6s ease-out forwards;
+}
+
+@keyframes reveal {
+    0% { opacity: 1; filter: blur(0); transform: scale(1); }
+    50% { opacity: 0.8; filter: blur(4px); transform: scale(1.02); box-shadow: 0 0 40px rgba(100, 149, 237, 0.6); }
+    100% { opacity: 0; filter: blur(8px); transform: scale(1.05); }
+}
+
+/* Revealed state */
+.mage-revealed {
+    background: rgba(10, 10, 26, 0.5);
+    border: 1px solid rgba(100, 149, 237, 0.2);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.mage-indicator {
+    display: inline-block;
+    padding: 2px 8px;
+    margin-bottom: 8px;
+    background: rgba(100, 149, 237, 0.1);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #6495ed;
+}
+
+/* Resonance explanation */
+.resonance-explanation {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(100, 149, 237, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid rgba(100, 149, 237, 0.5);
+}
+
+.resonance-label {
+    font-size: 0.75rem;
+    color: #6080a0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.resonance-spell {
+    font-size: 1.5rem;
+    margin: 8px 0;
+}
+
+.resonance-title {
+    color: #a0b0e0;
+    font-weight: 500;
+}
+
+.resonance-why {
+    font-size: 0.9rem;
+    color: #8090b0;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* Form proverb button */
+.form-proverb-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(100, 149, 237, 0.1));
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    color: #d4af37;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.form-proverb-button:hover {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(100, 149, 237, 0.2));
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.form-proverb-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Formed proverb display */
+.formed-proverb {
+    margin-top: 12px;
+    padding: 16px;
+    background: linear-gradient(135deg, #1a1a0a 0%, #0a1a1a 100%);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 8px;
+    animation: proverb-born 0.5s ease-out;
+}
+
+@keyframes proverb-born {
+    0% { opacity: 0; transform: scale(0.95); box-shadow: 0 0 0 rgba(212, 175, 55, 0); }
+    50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
+    100% { opacity: 1; transform: scale(1); box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+}
+
+.formed-header {
+    font-size: 0.8rem;
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.formed-spell {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+}
+
+.formed-text {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #f0e0c0;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.formed-bridge {
+    font-size: 0.85rem;
+    color: #a0a080;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.formed-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.formed-actions button {
+    flex: 1;
+    padding: 8px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 6px;
+    color: #d4af37;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.formed-actions button:hover {
+    background: rgba(212, 175, 55, 0.2);
+}
+
+/* Notification */
+.mage-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #1a1a3a, #2a2a4a);
+    border: 1px solid rgba(100, 149, 237, 0.4);
+    border-radius: 8px;
+    color: #c0c0ff;
+    font-size: 0.9rem;
+    z-index: 10000;
+    animation: notification-in 0.3s ease-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes notification-in {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mage-notification-hide {
+    animation: notification-out 0.3s ease-in forwards;
+}
+
+@keyframes notification-out {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Top Mana Bar */
+.mage-mana-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(10, 10, 26, 0.8);
+    z-index: 99999;
+    pointer-events: none;
+}
+.mage-mana-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #6495ed, #9370db, #da70d6);
+    box-shadow: 0 0 10px rgba(100, 149, 237, 0.8), 0 0 20px rgba(147, 112, 219, 0.5);
+    transition: width 0.5s ease;
+}
+.mage-mana-bar.pulse .mage-mana-fill {
+    animation: mana-pulse 0.5s ease;
+}
+@keyframes mana-pulse {
+    0%, 100% { box-shadow: 0 0 10px rgba(100, 149, 237, 0.8); }
+    50% { box-shadow: 0 0 30px rgba(147, 112, 219, 1), 0 0 50px rgba(218, 112, 214, 0.8); }
+}
+
+/* Floating Cast Button */
+.mage-cast-button {
+    position: fixed;
+    bottom: 140px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a1a3a, #2a2a4a);
+    border: 2px solid rgba(100, 149, 237, 0.5);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 99998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(100, 149, 237, 0.4);
+    transition: all 0.3s ease;
+}
+.mage-cast-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(100, 149, 237, 0.6);
+    border-color: rgba(147, 112, 219, 0.8);
+}
+.mage-cast-button .cast-label {
+    position: absolute;
+    right: 60px;
+    background: rgba(26, 26, 58, 0.95);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    border: 1px solid rgba(100, 149, 237, 0.3);
+}
+.mage-cast-button:hover .cast-label {
+    opacity: 1;
+}
+
+/* Spell Overlay (like x-feed-filter) */
+.mage-filtered > *:not(.mage-spell-overlay) {
+    filter: blur(8px);
+    pointer-events: none;
+}
+
+.mage-spell-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(10, 10, 26, 0.95) 0%, rgba(26, 26, 58, 0.9) 100%);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    border-radius: 8px;
+}
+
+.mage-spell-content {
+    text-align: center;
+    padding: 20px;
+    max-width: 90%;
+}
+
+.mage-spell-content .spell-emoji {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 0 12px rgba(100, 149, 237, 0.6));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.mage-spell-content .spell-proverb {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #e0e0ff;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.mage-spell-content .spell-source {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.mage-spell-content .spell-energy {
+    font-size: 0.85rem;
+    color: #9370db;
+    font-style: italic;
+    margin-bottom: 16px;
+}
+
+.mage-reveal-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 110;
+    padding: 10px 24px;
+    background: rgba(100, 149, 237, 0.1);
+    border: 1px solid rgba(100, 149, 237, 0.4);
+    border-radius: 20px;
+    color: #8090c0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.mage-reveal-btn:hover {
+    background: rgba(100, 149, 237, 0.2);
+    color: #c0d0ff;
+    box-shadow: 0 0 20px rgba(100, 149, 237, 0.4);
+}

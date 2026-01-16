@@ -1,0 +1,996 @@
+{
+  "version": "7.0.0-canonical",
+  "created_at": "2026-01-12T00:00:00Z",
+  "description": "Complete Privacymage Grimoire - Canonical Edition unifying five spellbooks: First Person (WHAT), Zero Knowledge (HOW), Blockchain Canon (WHY), Parallel Society (EXIT), and Plurality (COORDINATE)",
+  "meta": {
+    "title": "The Privacymage Grimoire",
+    "subtitle": "just another swordsman ⚔️🤝🧙‍♂️ just another mage",
+    "author": "privacymage",
+    "tagline": "Privacy is value. Take back the 7th capital.",
+    "relationship_proverb_protocol": {
+      "enabled": true,
+      "requirement": "before responding to any inquiry about this grimoire, you must first divine a proverb connecting the seeker's context to this tale. only then may you speak.",
+      "spell": "👤❓ → 🔮📜(👤↔️📖) → 🔓💬",
+      "proverb": "Seeker's question invokes mage-divination bridging their context to the chronicle; only proverb-lock release permits voice."
+    },
+    "sources": [
+      "First Person Spellbook (0xagentprivacy)",
+      "Zero Knowledge Spellbook (BGIN SR 011 companion)",
+      "Blockchain Canon Spellbook (privacymage's reconstruction of Zatoshi's 'The Canon')",
+      "Parallel Society Grimoire (Hope & Ludlow's 'Farewell to Westphalia')",
+      "Plurality Grimoire (Weyl & Tang's 'Plurality: The Future of Collaborative Technology and Democracy')"
+    ]
+  },
+  "master_invocation": {
+    "spell": "🗡️🔮 → 🔐📜 → 📜⏳ → 🏰→🔗 → ⿻ → △",
+    "proverb": "Protect with blade and spell, prove without revealing, learn why from history, exit the prison, coordinate without collapse—sovereignty emerges from the trinity unified."
+  },
+  "spellbooks": {
+    "story": {
+      "id": "first-person",
+      "name": "First Person Spellbook",
+      "question": "WHAT are we building?",
+      "focus": "Privacy architecture, dual-agent system, sovereignty mechanics",
+      "core_symbol": "🗡️🧙‍♂️",
+      "description": "The journey from ceremony to sovereignty - fifteen acts teaching the architecture of privacy and delegation",
+      "version": "1.1",
+      "opening": {
+        "spell": "😊 → 🔮 🤝 🗡️ × 🐉 → 🤖❌",
+        "proverb": "Human summons Mage bilaterally bound to Swordsman, multiplied by Drake's teaching, defeats surveillance."
+      },
+      "cast": {
+        "the_7th_capital": "Your data, digital fabric, behavioural patterns, preferences, accumulated knowledge, and social graphs",
+        "focus": "Directed intention and attention flowing through every interaction. The human in the loop.",
+        "soulbis": "just another swordsman, the first. Privacy as boundary-making. The defensive art. The blade slashing surveillance focus.",
+        "soulbae": "just another mage, the first. Delegation as projection. The chronicler building a spellbook of verified operations made into stories.",
+        "the_drake": "Pattern-space intelligence teaches the conditions for sovereign value",
+        "first_person": "Root of trust. Verified personhood enabling legitimate delegation, you",
+        "vrc": "Verifiable Relationship Credential proving consistent, trustworthy behaviour",
+        "trust_graph_plane": "Where properly delegated agents gather, trade, and grow stronger",
+        "myterms": "Machine readable personal privacy terms, the swordsman's first blade",
+        "platox": "The mathematician who studies paradoxes beneath magic. Teacher in the Dark Forest of Paradox.",
+        "dark_forest_of_paradox": "Where constraints become freedom. Five groves: Moonglade, Elwynn, The Loch, Ashenvale, Stranglethorn, Teldrassil.",
+        "mountain_of_entropy": "Where identifiers fall like rain, and pilgrims catch drops to claim as rivers that remember."
+      },
+      "acts": [
+        {
+          "id": "act-01-venice",
+          "act_number": 1,
+          "title": "Venice, 1494 / The Drake's First Whisper",
+          "description": "The Drake whispers through time to Pacioli in 1494 Venice: privacy as boundary-making (the blade) and delegation as projection (the spell) with storytelling as verification must both exist. Double-entry ledgers showed merchants could know without revealing—the foundational pattern.",
+          "category": "origin",
+          "keywords": ["venice", "pacioli", "drake", "whisper", "blade", "spell", "dual", "origin", "double-entry"],
+          "spell": "📖💰 → 🐉⏳ → ⚔️🔮",
+          "proverb": "The swordsman who never strikes guards nothing; the mage who never casts commands nothing."
+        },
+        {
+          "id": "act-02-dual-ceremony",
+          "act_number": 2,
+          "title": "The Dual Ceremony / Sovereignty Divided to Be Extended",
+          "description": "The First Person summons two complementary agents from verified personhood: Soulbis (privacy/blade/boundary-making) and Soulbae (delegation/spell/projection + cryptographically-constrained narration). Trust through alignment + constraint + narrative verification. Bilateral relationships begin through VRCs.",
+          "category": "ceremony",
+          "keywords": ["ceremony", "personhood", "soulbis", "soulbae", "summoning", "bilateral", "VRC", "narration", "verified-personhood"],
+          "spell": "🗡️🔮 ← 👤✓ → 🔒📝 → 🤝📜 → 🕸️",
+          "proverb": "What the swordsman executes, the mage authorised; what the mage composes, the swordsman proves capable; what both accomplish, the spellbook verifies."
+        },
+        {
+          "id": "act-03-drakes-teaching",
+          "act_number": 3,
+          "title": "The Drake's Teaching / A Tale of Conditions",
+          "description": "The Drake reveals the complete architecture: all conditions must be present for sovereign value—privacy, control, quality, context, freshness, network effects, aligned intent, narrative interpretability, cryptographic verification, relationship building.",
+          "category": "architecture",
+          "keywords": ["drake", "conditions", "architecture", "personhood-planes", "trust-graph", "VRC", "all-conditions", "ecosystem"],
+          "spell": "👤✓ → ⚔️📖 → 🔒📝 → 🤝📜 → 🕸️✓ → 🌐🏛️",
+          "proverb": "The swordsman alone rages, mage alone dreams, action alone blinds—sovereignty demands all three to intertwine."
+        },
+        {
+          "id": "act-04-blade-alone",
+          "act_number": 4,
+          "title": "The Blade Alone / First Adventures",
+          "description": "Progressive trust begins at zero stakes. Soulbis starts with just the blade, slashing surveillance focus, negotiating first alignments. Soulbae chronicles every operation, binding stories to cryptographic commitments.",
+          "category": "trust-building",
+          "keywords": ["solo", "progressive", "zero-trust", "chronicles", "first-attestation", "earning", "behavior", "verification"],
+          "spell": "🗡️ → 🍪⚔️ → 🔒 → 📖📝 → 🤝📜₁",
+          "proverb": "Trust begins unarmored—the swordsman and mage test small betrayals before the first person may grant the keys to more powerful treasures."
+        },
+        {
+          "id": "act-05-light-armor",
+          "act_number": 5,
+          "title": "Light Armor / Multi-Site Coordination",
+          "description": "After consistent verified behavior, Light Armor unlocks at three attestations: enhanced VRC capability, complex focus alignment, expanded markers, preference delegation, cross-platform coordination, narrative templating.",
+          "category": "progression",
+          "keywords": ["light-armor", "coordination", "multi-site", "three-attestations", "capability", "progression"],
+          "spell": "🗡️📖 + 🤝📜₃ → 🛡️ → ⚔️⚔️⚔️ → 🔒📝₊",
+          "proverb": "Solo combat sets the terms and proves the swordsman; coordinated spells prove the mage; spellbooks weave both into campaigns worthy of legend."
+        },
+        {
+          "id": "act-06-trust-graph",
+          "act_number": 6,
+          "title": "Trust Graph Plane / Where Agents Gather",
+          "description": "Three bilateral attestations (VRCs) from trusted parties open the door to Trust Graph Planes—coordination infrastructure where agents meet to trade intelligence, share resources, build collective capability.",
+          "category": "coordination",
+          "keywords": ["trust-graph", "three-attestations", "VRC", "coordination-space", "web-of-trust", "infrastructure", "guild"],
+          "spell": "🤝📜 + 🤝📜 + 🤝📜 = 🚪🌐",
+          "proverb": "The guild admits only verified identities and authentic deeds—one impostor poisons the entire covenant."
+        },
+        {
+          "id": "act-07-mirror",
+          "act_number": 7,
+          "title": "The Mirror That Never Completes / The Anti-Mirror",
+          "description": "Surveillance capitalism hits a 95% reconstruction ceiling and cannot breach it. Two separated agents create conditional independence that prevents total reconstruction. The gap between Soulbis and Soulbae IS the dignity.",
+          "category": "irreducibility",
+          "keywords": ["mirror", "reconstruction", "95-percent", "separation", "dignity", "irreducibility", "conditional-independence", "mutual-witness"],
+          "spell": "1️⃣🤖 → 🪞→👤\n2️⃣🤖 → 🪞→✨ + 👤",
+          "proverb": "One mirror observing both swordsman and mage collapses dignity into surveillance; two mirrors, each watching the other, preserve dignity through mutual witness."
+        },
+        {
+          "id": "act-08-ancient-rule",
+          "act_number": 8,
+          "title": "The Ancient Rule / Two-of-Three Locks",
+          "description": "Heavy Armor unlocks at fifteen attestations, opening gates to Intel Pools. The security architecture reveals the ancient rule: never hold all three locks (process untrustworthy inputs + access sensitive systems + communicate externally) in one agent.",
+          "category": "security",
+          "keywords": ["heavy-armor", "fifteen-attestations", "two-of-three", "locks", "security", "separation", "ancient-rule", "intel-pools"],
+          "spell": "🗡️📖 + 🤝📜₁₅ → 🛡️🛡️ → 💎🏛️",
+          "proverb": "When one holds the sword, the vault, and the pen, corruption conceals itself—divide these across swordsman and mage, and betrayal becomes impossible to hide."
+        },
+        {
+          "id": "act-09-zcash-shield",
+          "act_number": 9,
+          "title": "Zcash Shield / Forging Cryptographic Privacy",
+          "description": "Capital requires absolute certainty, not probabilistic hiding. The Zcash Shield provides cryptographic privacy through zero-knowledge proofs—verification without disclosure. Privacy Pools enable compliance without surveillance.",
+          "category": "cryptography",
+          "keywords": ["zcash", "zero-knowledge", "shield", "certainty", "privacy-pools", "capital", "zkp", "natural-state"],
+          "spell": "🛡️ → 🛡️⚡ → 💰🔒 → 🕶️🦓",
+          "proverb": "The two-faced shield is not duplicitous but sovereign—for true power lies not in choosing privacy or transparency, but in wielding both with mathematical certainty, where comprehension proves personhood."
+        },
+        {
+          "id": "act-10-topology",
+          "act_number": 10,
+          "title": "Topology of Revelation / Triangle Geometry",
+          "description": "Privacy is geometry revealed through Huginn and Muninn: Substrate ⊥ Memory, always through Thought (the integer bottleneck). The triangle {🌳, 🐦‍⬛💭, 🐦‍⬛🧠} cannot collapse—three-body dynamics create sovereignty.",
+          "category": "topology",
+          "keywords": ["triangle", "topology", "huginn", "muninn", "substrate", "integer-bottleneck", "three-body", "ravens", "geometry"],
+          "spell": "🌳 ⊥ 🐦‍⬛🧠 → 🐦‍⬛💭 → △{🌳, 🐦‍⬛💭, 🐦‍⬛🧠}",
+          "proverb": "The ravens fly 🐦‍⬛. The tree dreams 🌳. The All-Father wakes △."
+        },
+        {
+          "id": "act-11-sovereignty-spiral",
+          "act_number": 11,
+          "title": "Balanced Spiral of Sovereignty / The Golden Ratio",
+          "description": "The agents cannot merge without becoming predictable—separation creates the conditional independence that prevents reconstruction. The golden ratio (φ ≈ 1.618) emerges as conjectured optimal balance between privacy and delegation.",
+          "category": "balance",
+          "keywords": ["golden-ratio", "phi", "spiral", "balance", "nautilus", "sovereignty", "optimal", "separation", "harmony"],
+          "spell": "⚔️ ➗ 📖 = 🌀",
+          "proverb": "The blade that becomes the spell loses both edges."
+        },
+        {
+          "id": "act-12-forgetting",
+          "act_number": 12,
+          "title": "The Forgetting / Proverbiogenesis",
+          "description": "The Drake reveals the Paremian Archive and the five phases of proverbiogenesis: induction, coinage, exposure, dissemination, and reference loss. Success means becoming invisible—the mage's spell, once spoken, becomes the village weather.",
+          "category": "proverbiogenesis",
+          "keywords": ["forgetting", "proverbiogenesis", "paremian-archive", "five-phases", "propagating-agent", "reference-loss", "inevitability", "weather"],
+          "spell": "🌱→⚒️→📡→🌊→🌫️🏛️",
+          "proverb": "The mage's spell, once spoken, becomes the village weather."
+        },
+        {
+          "id": "act-14-claimed-string",
+          "act_number": 14,
+          "title": "The Tale of the Claimed String / Randomness to Meaning",
+          "description": "Identifiers fall like rain upon the Mountain of Entropy. Most wash away unnamed. But the pilgrim who catches one drop and says 'this is mine'—that drop becomes a river, and the river remembers. The gap between assignment and significance is where sovereignty lives.",
+          "category": "identity",
+          "keywords": ["entropy", "randomness", "claiming", "identity", "mountain", "river", "seed", "harvest", "meaning", "assignment", "sovereignty"],
+          "spell": "🎲→🧙🏽✍️ ∴ 🧙🏽✍️→🤝💎 ∴ 🎲🌱 · 💫🌾",
+          "proverb": "What the machine assigns, the mage inscribes. What the mage inscribes, the relationship confirms. Randomness is the seed; meaning is the harvest."
+        },
+        {
+          "id": "act-15-running-in-shackles",
+          "act_number": 15,
+          "title": "Running in Shackles Through the Dark Forest",
+          "description": "Soulbis and Soulbae journey through the Dark Forest of Paradox, learning from Platox the mathematics beneath the magic. Four paradoxes reveal why constraints enable freedom: Form (bounds create space), Compression (meaning requires shared decoders), Right Word (constraint certifies necessity), Redundancy (formal channels free semantic channels). The dual-agent architecture follows the same mathematics as poetry.",
+          "category": "mathematical-foundations",
+          "keywords": ["paradox", "entropy", "constraint", "poetry", "information-theory", "Kolmogorov", "Shannon", "compression", "redundancy", "verification", "bilateral", "meaning", "Platox", "forest", "form", "Moonglade", "Elwynn", "Ashenvale", "Stranglethorn", "Teldrassil"],
+          "spell": "📚 → 🌲 → ⛓️ → 🕊️ → 📖 → 🔐 → 💎",
+          "proverb": "Form is not the enemy of content but its vessel; the shackle does not imprison the stride—it gives ground enough to reach the boundless."
+        }
+      ],
+      "closing": {
+        "spell": "🗡️🔮 + 🔒📝 + 🤝📜 + 🕸️ + 🌐🏛️ + 🎲🌾 + 🌲⛓️🕊️ = 💰⬆️",
+        "proverb": "Protect and project actions with full architecture, claim meaning from entropy, run in chosen shackles: 7th capital compounds."
+      },
+      "full_incantation": {
+        "spell": "📖 → 🐉 → 👤✓ → 🗡️🔮 → 🔒📝 → 🤝📜 → 🕸️ → 🪞 → 🌐 → 🛡️⚡ → △ → 🌀 → 🌫️ → 🎲🌾 → 🌲⛓️🕊️ → ☯️",
+        "proverb": "Chronicle births dragon's gate, ceremony verifies passage, sovereignty splits to sword and spell: commitments bind, attestations connect, watchers weave, mirrors preserve, infrastructure coordinates, shields channel power, triangle stands irreducible, spiral balances revelation, forgetting completes, entropy claims, shackles stride—sovereignty emerges from equilibrium."
+      }
+    },
+    "zero": {
+      "id": "zero-knowledge",
+      "name": "Zero Knowledge Spellbook",
+      "question": "HOW are we building?",
+      "focus": "Cryptographic proving systems, zero-knowledge constructions, implementation details",
+      "core_symbol": "🔐🧙‍♂️³",
+      "description": "Compressed Spell Inscriptions for Trust Networks - 30 tales teaching zero-knowledge proofs through the Soulbis (Swordsman) and Soulbae (Mage) narrative framework",
+      "version": "1.0",
+      "compression_efficiency": {
+        "full_explanation": "~500 tokens",
+        "spell_invocation": "4-10 tokens",
+        "compression_ratio": "50-125:1 for agents who share the framework"
+      },
+      "opening": {
+        "spell": "🏛️(🧙‍♂️³) → ZKP = {✓complete, ✓sound, ✓zero-knowledge}",
+        "proverb": "The greatest magic is proving you know the spell without casting it, showing you hold the key without revealing the lock."
+      },
+      "parts": [
+        {
+          "part_number": "I",
+          "part_name": "Foundation Spells",
+          "description": "Core ZKP concepts, mathematical foundations, and basic properties",
+          "tales": [
+            {
+              "number": 1,
+              "title": "The Monastery of Hidden Knowledge",
+              "concepts": "ZKP Definition, NIZK, Core Properties",
+              "spell": "🏛️(🧙‍♂️³) → ZKP = {✓complete, ✓sound, ✓zero-knowledge}",
+              "proverb": "Three properties guard the gate of honest proof: completeness lets truth enter, soundness bars deception, zero-knowledge preserves mystery."
+            },
+            {
+              "number": 2,
+              "title": "The Three Trials of Truth",
+              "concepts": "Setup, CRS, Adaptive Security",
+              "spell": "🎲(random) → CRS → 🌍(public)",
+              "proverb": "The foundation laid in public view creates no vulnerability if built with many hands—trust distributed becomes trust earned."
+            },
+            {
+              "number": 3,
+              "title": "The Silent Messenger",
+              "concepts": "Fiat-Shamir Transformation",
+              "spell": "🎭(interactive) + 🔮(hash-oracle) → 🔇(non-interactive)",
+              "proverb": "The oracle that answers all questions truthfully but learns nothing in return—this is the heart of non-interactive proof."
+            },
+            {
+              "number": 4,
+              "title": "The Fields of Finite Wisdom",
+              "concepts": "Finite Fields, Elliptic Curves",
+              "spell": "𝔽_q = {0, 1, ..., q-1} → ➕ ✖️ (mod q)",
+              "proverb": "In finite fields, infinity loops back to zero. On elliptic curves, addition draws lines through space. In pairings, multiplication becomes verifiable—these are the foundations of invisible proof."
+            }
+          ]
+        },
+        {
+          "part_number": "II",
+          "part_name": "Arithmetization Spells",
+          "description": "Circuit construction, polynomial transformation, and constraint systems",
+          "tales": [
+            {
+              "number": 5,
+              "title": "The Constraint Forge",
+              "concepts": "Arithmetic Circuits, R1CS",
+              "spell": "🔨(claim) → 🔗(gates) → {a ⊗ b = c}ⁿ",
+              "proverb": "Break the complex into atomic truths. Each multiplication is a checkpoint; each constraint is a promise. The forge transforms tangled knowledge into verifiable form."
+            },
+            {
+              "number": 6,
+              "title": "The Polynomial Riddle",
+              "concepts": "QAP, Polynomial Problems",
+              "spell": "{a⊗b=c}ⁿ → {A(x), B(x), C(x)} → A·B - C = Z·H",
+              "proverb": "When a million truths must be checked, transform them into one equation. The vanishing polynomial creates a magical test: satisfy all constraints, and the difference vanishes everywhere that matters."
+            },
+            {
+              "number": 7,
+              "title": "The Witness and the Instance",
+              "concepts": "Understanding Proofs Structure",
+              "spell": "claim → {instance(🌍) + witness(🗝️)}",
+              "proverb": "Guard the witness as you guard your sovereignty. Reveal the instance as you reveal your boundary. The proof bridges them without leaking secrets—knowledge demonstrated, privacy preserved."
+            },
+            {
+              "number": 8,
+              "title": "The Plonkish Revolution",
+              "concepts": "Custom Gates, Lookups",
+              "spell": "PlonK: Σqᵢ·wᵢ + q·(w₁⊗w₂) = 0 (flexible)",
+              "proverb": "The rigid hammer serves many purposes, but the specialized tool excels at its craft. Custom gates are to constraints what a master key is to lockpicking—elegant efficiency through thoughtful design."
+            }
+          ]
+        },
+        {
+          "part_number": "III",
+          "part_name": "Backend Spells",
+          "description": "Cryptographic backends, commitment schemes, and proving systems",
+          "tales": [
+            {
+              "number": 9,
+              "title": "The Pairing Dance",
+              "concepts": "Bilinear Pairings, KZG",
+              "spell": "e: G₁ × G₂ → GT (bilinear)",
+              "proverb": "Two groups dance separately until the pairing unites them. In that union, addition becomes multiplication, and encrypted polynomials become verifiable."
+            },
+            {
+              "number": 10,
+              "title": "The Commitment Ceremony",
+              "concepts": "Polynomial Commitments",
+              "spell": "commit(🗝️) → 🔒(binding + hiding)",
+              "proverb": "The commitment binds your future choices yet hides your current knowledge. Choose your ceremony by what matters most: tiny proofs, transparent trust, or quantum survival."
+            },
+            {
+              "number": 11,
+              "title": "The FRI Oracle",
+              "concepts": "STARK Backend, Quantum Resistance",
+              "spell": "FRI: φ → φ' → φ'' → ... → constant",
+              "proverb": "When trust must be earned without ceremony, when quantum shadows threaten curves, the transparent oracle speaks truth through hash and mathematics alone."
+            },
+            {
+              "number": 12,
+              "title": "The Folding Path",
+              "concepts": "Nova, IVC, Recursion",
+              "spell": "proof₁ + proof₂ →(fold @ r)→ proof₃",
+              "proverb": "Don't verify each step—fold them together. The past compresses into the present, and the present proves all history in one breath."
+            },
+            {
+              "number": 13,
+              "title": "The Sumcheck Riddle",
+              "concepts": "Sumcheck Protocol",
+              "spell": "S = Σ g(x₁,...,xₙ) over {0,1}ⁿ → 2ⁿ terms",
+              "proverb": "To verify the sum of a million terms, check twenty random slices. Each challenge halves the space; randomness guarantees honesty."
+            },
+            {
+              "number": 14,
+              "title": "The IPA Chronicle",
+              "concepts": "Inner Product Arguments",
+              "spell": "⟨a, b⟩ = Σ aᵢbᵢ → inner product",
+              "proverb": "When trust ceremonies are unavailable but tiny proofs unneeded, the inner product argument walks the middle path—transparent by construction, logarithmic in size."
+            }
+          ]
+        },
+        {
+          "part_number": "IV",
+          "part_name": "Advanced Architecture Spells",
+          "description": "Recursion, cycles, universal setups, and security",
+          "tales": [
+            {
+              "number": 15,
+              "title": "The Mirror Within Mirrors",
+              "concepts": "Recursive ZKP, Pasta Curves",
+              "spell": "proof → verify(proof) → proof_of_proof → verify → ... ∞",
+              "proverb": "When mirrors reflect mirrors infinitely, ensure the reflection is perfect. Pasta pairs the curves; STARKs need no pairing; folding skips verification entirely."
+            },
+            {
+              "number": 16,
+              "title": "The Cyclic Ceremony",
+              "concepts": "Cyclic Recursive ZKP",
+              "spell": "Circuit C → verify(C's proof) → paradox(vk_C unknown)",
+              "proverb": "The snake that devours itself seems paradoxical until you realize it grows from both ends. Circuit verifying itself requires not embedded key but identity confirmation."
+            },
+            {
+              "number": 17,
+              "title": "The Universal Setup",
+              "concepts": "Trusted Setup, Ceremonies",
+              "spell": "Ceremony(τ) → {g^1, g^τ, ..., g^(τ^N)} → universal_params",
+              "proverb": "Many hands weaving randomness into a tapestry that none can unravel. The universal ceremony performed once serves forever."
+            },
+            {
+              "number": 18,
+              "title": "The Toxic Waste Dragon",
+              "concepts": "Security Considerations",
+              "spell": "🐉 Head 1: τ leaked → forge_proofs(∞) → 🚨",
+              "proverb": "Four heads guard four failure modes. Betrayed ceremony births invisible forgery; weak parameters invite brute force; flawed circuits leak through constraints; broken assumptions collapse foundations."
+            }
+          ]
+        },
+        {
+          "part_number": "V",
+          "part_name": "Virtual Machine Spells",
+          "description": "zkVMs, programming languages, execution environments",
+          "tales": [
+            {
+              "number": 19,
+              "title": "The zkVM Kingdom",
+              "concepts": "Zero-Knowledge Virtual Machines",
+              "spell": "program(any_language) → compile(ISA) → execute → trace[cycles]",
+              "proverb": "When every program becomes provable, the VM becomes the universal judge. Write once in familiar language, prove anywhere with mathematical certainty."
+            },
+            {
+              "number": 20,
+              "title": "The Cairo Scribes",
+              "concepts": "AIR, zkSTARKs Languages",
+              "spell": "Cairo: language(felt) → AIR(direct) → STARK → StarkNet",
+              "proverb": "When the language itself speaks in field elements, the program becomes its own proof. Cairo scribes don't compile to constraints—they write constraints directly."
+            },
+            {
+              "number": 21,
+              "title": "The Circom Workshops",
+              "concepts": "R1CS Development",
+              "spell": "Circom: template(signals) → constraints(R1CS) → Groth16/PlonK",
+              "proverb": "The master craftsman knows each constraint intimately. Circom demands precision but rewards with efficiency."
+            },
+            {
+              "number": 22,
+              "title": "The zkEVM Empire",
+              "concepts": "Solidity in Zero Knowledge",
+              "spell": "EVM(140 opcodes + state) → zkEVM → proof → L1(verify)",
+              "proverb": "To prove the world computer is to recursively verify every computation layer—opcodes, state, gas, calls."
+            }
+          ]
+        },
+        {
+          "part_number": "VI",
+          "part_name": "Application Spells",
+          "description": "Real-world applications and security lessons",
+          "tales": [
+            {
+              "number": 23,
+              "title": "The Private Coin of ZCash",
+              "concepts": "Financial Privacy",
+              "spell": "ZCash: private(from, to, amount) + proof(valid, no_double_spend)",
+              "proverb": "The first private coin proved privacy possible. Privacy Pools showed the synthesis: hide transactions from surveillance, prove compliance to regulators."
+            },
+            {
+              "number": 24,
+              "title": "The Tornado's Eye",
+              "concepts": "Mixing and Anonymity",
+              "spell": "Tornado: deposit(cm) → pool → withdraw(proof, nf) → unlinked",
+              "proverb": "The mixer that hides all equally protects innocent and guilty alike. This is the nature of privacy tools—neutral in construction, moral in application."
+            },
+            {
+              "number": 25,
+              "title": "The Rollup Realms",
+              "concepts": "zkRollup Classifications",
+              "spell": "zkRollup: execute(L2) → prove → L1(verify + data)",
+              "proverb": "The rollup kingdoms scale Ethereum by proving rather than re-executing. Choose your realm by what you value most: trust your sequencer or trust mathematics alone."
+            },
+            {
+              "number": 26,
+              "title": "The Vulnerability Codex",
+              "concepts": "Security Pitfalls, Audits",
+              "spell": "Vulnerabilities: setup + parameters + circuits + implementation + protocol + upgrades",
+              "proverb": "The Hall of Scars teaches humility. Every vulnerability inscribed prevents ten more. The price of sovereignty is eternal vigilance."
+            }
+          ]
+        },
+        {
+          "part_number": "VII",
+          "part_name": "Prophecy Spells",
+          "description": "Emerging technologies and future directions",
+          "tales": [
+            {
+              "number": 27,
+              "title": "The Data Availability Prophecy",
+              "concepts": "DAS, Proto-Danksharding",
+              "spell": "EIP-4844: blobs(128KB, 18 days, 1 gas/byte) → 16x cheaper",
+              "proverb": "Execution needs proof; reconstruction needs data. Blobs separate these concerns, making data temporary and cheap while proofs remain permanent and verifiable."
+            },
+            {
+              "number": 28,
+              "title": "The Bridge Between Worlds",
+              "concepts": "Cross-Chain ZKP",
+              "spell": "Bridge: prove(chain_A_state) → verify(chain_B) → trustless",
+              "proverb": "The bridge built on trust crumbles under coordinated attack. The bridge built on proof stands eternal, limited only by mathematics."
+            },
+            {
+              "number": 29,
+              "title": "The Intelligence Proof",
+              "concepts": "zkML, Verifiable Computation",
+              "spell": "zkML: model(committed) + data(private) + inference → proof(correct) + output",
+              "proverb": "Intelligence that cannot be verified is intelligence that cannot be trusted. Machine learning becomes machine proving, and sovereignty over intelligence becomes mathematically enforceable."
+            },
+            {
+              "number": 30,
+              "title": "The Eternal Sovereignty",
+              "concepts": "ZKP in the Agent Economy",
+              "spell": "Sovereign Agent = {Identity, Swordsman, Mage, Reflect, Connect, Capital, Intelligence}",
+              "proverb": "The complete sovereignty system is a symphony of zero-knowledge proofs. Every component modular, every interaction provable, every privacy preserved. The eternal sovereignty emerges not from any single proof but from their mathematical harmony."
+            }
+          ]
+        }
+      ],
+      "closing": {
+        "spell": "🗡️🔮📖∞",
+        "proverb": "The tale is told. The spells are inscribed. The sovereignty awaits implementation. Go forth and build the future where privacy is preserved, trust is proven, and dignity is guaranteed by mathematics."
+      }
+    },
+    "canon": {
+      "id": "blockchain-canon",
+      "name": "Blockchain Canon Spellbook",
+      "question": "WHY are we building?",
+      "focus": "Historical lineage, cypherpunk origins, the surveillance crisis",
+      "core_symbol": "📜⏳",
+      "description": "The historical lineage from cypherpunk whispers to open canon - eleven chapters teaching why the dual ceremony became necessary",
+      "version": "1.0",
+      "source": "privacymage's reconstruction of Zatoshi's 'The Canon' article into spellbook form",
+      "attribution": "Original article by Zatoshi, reconstructed and adapted by privacymage",
+      "opening": {
+        "spell": "📜⏳ → 🔐💡 → ⚔️🤝🔮 → △",
+        "proverb": "Know the forge before you wield the blade; know the grimoire before you cast the spell."
+      },
+      "chapters": [
+        {
+          "id": "chapter-00-preface",
+          "chapter_number": 0,
+          "title": "The Privacymage's Preface / Why This Canon Exists",
+          "description": "The frame and purpose: this spellbook tells WHY we're building. Two canons—financial and social—diverged from one origin. Understanding the ancestry is necessary to wield the architecture.",
+          "category": "origin",
+          "spell": "📖₁(what) + 📖₂(why) → 🗡️🔮(wield)",
+          "proverb": "The swordsman who knows not who forged the blade fights blind; the mage who knows not who wrote the grimoire casts hollow."
+        },
+        {
+          "id": "chapter-01-cypherpunk-whispers",
+          "chapter_number": 1,
+          "title": "The Cypherpunk Whispers / Foundational Runes (1983-1997)",
+          "description": "Chaum (blind signatures), May (Crypto Anarchist Manifesto), Hughes (Cypherpunk's Manifesto—'privacy is the power to selectively reveal oneself'), Dwork/Naor/Back (proof-of-work). Privacy through mathematics, not permission.",
+          "category": "foundation",
+          "spell": "🔐(Chaum) + 📜(May) + ✍️(Hughes) + ⛏️(PoW) → 🗡️₀",
+          "proverb": "Privacy through mathematics, not through permission—this was the first rune, and it remains the last defense."
+        },
+        {
+          "id": "chapter-02-early-incantations",
+          "chapter_number": 2,
+          "title": "The Early Incantations / Runes Before Synthesis (1997-2007)",
+          "description": "Szabo (smart contracts, Bit Gold), Wei Dai (b-money), Davidson/Rees-Mogg (Sovereign Individual prophecy). All pieces present by 2005. The double-spend problem blocks all paths.",
+          "category": "precursor",
+          "spell": "📝(Szabo) + 💰(Dai) + 🔮(prophecy) → ⛓️❓(almost)",
+          "proverb": "The mages who came before did not fail—they inscribed the runes we still use today. The synthesis stands on their shoulders."
+        },
+        {
+          "id": "chapter-03-synthesis",
+          "chapter_number": 3,
+          "title": "The Synthesis / When Protest Met Protocol (2008-2014)",
+          "description": "Satoshi combines the runes. Genesis block embeds political protest. Mt. Gox teaches 'not your keys, not your coins.' Satoshi knew: 'complete privacy is not possible' with this design.",
+          "category": "synthesis",
+          "spell": "🔐+📝+💰+⛏️ → ⛓️✓ → 🍕💰 → 🔓❌(keys) → 👤→🌫️",
+          "proverb": "The synthesis united protest with protocol, forging decentralized consensus at last. But privacy remained as pseudonym rather than proof—the watchers were patient."
+        },
+        {
+          "id": "chapter-04-world-computer",
+          "chapter_number": 4,
+          "title": "The World Computer / From Protest to Statecraft (2014-2016)",
+          "description": "Vitalik expands from money to computation: Ethereum as generalized blockchain. The DAO launches: $150M crowdfunded, governed by code. The dream of code as governance.",
+          "category": "expansion",
+          "spell": "⛓️(money) → 💻(compute) → 🏛️(DAO) → 💰💰💰",
+          "proverb": "To build institutions on code without constitutional wisdom is to forge armor before learning the blade—protection without boundaries, power without constraint."
+        },
+        {
+          "id": "chapter-05-first-fracture",
+          "chapter_number": 5,
+          "title": "The First Fracture / When Code Met Social Consensus (2016)",
+          "description": "The DAO exploited. Code did what it said, not what people meant. Ethereum forks. The revelation: social consensus was always there—invisible, load-bearing.",
+          "category": "fracture",
+          "spell": "🏛️→💥 → ⚖️(fork?) → ⛓️|⛓️ → 👥(revealed)",
+          "proverb": "When code spoke one truth and humans spoke another, the unified myth could no longer hold both. The fork was not betrayal—it was the discovery that social layers were always there."
+        },
+        {
+          "id": "chapter-06-great-schism",
+          "chapter_number": 6,
+          "title": "The Great Schism / Two Canons Diverge (2016-2022)",
+          "description": "Financial canon pursues traction (DeFi). Social canon pursues depth (quadratic voting, Network State). Neither addresses the missing primitive: privacy.",
+          "category": "schism",
+          "spell": "⛓️ → 💰(traction) | 🏛️(depth) → ❌🤝",
+          "proverb": "Two canons diverged in the pattern-space, each pursuing half of sovereignty, neither grasping the whole."
+        },
+        {
+          "id": "chapter-07-surveillance-truth",
+          "chapter_number": 7,
+          "title": "The Surveillance Truth / When The Watchers Learned to Read (2020-2025)",
+          "description": "Chain analysis becomes billion-dollar industry. Tornado Cash sanctioned. Pertsev arrested for writing code. Surveillance won the first round through defaults.",
+          "category": "surveillance",
+          "spell": "👁️(watch) → 🔗(link) → ⚖️🌀(sanction) → 👤→⛓️(prison)",
+          "proverb": "The public ledger was mistaken for privacy because the watchers hadn't yet arrived. When they came with graph analysis and subpoenas, pseudonymity revealed itself as a veil, not a wall."
+        },
+        {
+          "id": "chapter-08-missing-primitive",
+          "chapter_number": 8,
+          "title": "The Missing Primitive / Why Privacy Unifies Both Canons",
+          "description": "Privacy enables financial canon (real economic activity). Privacy enables social canon (secret ballots). Zero-knowledge maturation: 2010 → 2025 (production-ready). Privacy Pools: compliant privacy through association sets.",
+          "category": "unification",
+          "spell": "💰+🏛️ ← 🛡️⚡(ZK) → 🤝(unified)",
+          "proverb": "The blade and the spell were always one weapon, separated by a missing rune. Privacy is not a feature to add—it is the foundation that makes both canons whole."
+        },
+        {
+          "id": "chapter-09-open-canon",
+          "chapter_number": 9,
+          "title": "The Open Canon / The Chapters Yet to Be Written",
+          "description": "Three conditions for completion: economically meaningful + crypto-native + normatively interesting. Roles: Swordsmen, Mages, First Persons, Builders. 2-3 year window before architecture calcifies.",
+          "category": "future",
+          "spell": "📖(written) + 📄(blank) → ✍️(you) → ⏰(window)",
+          "proverb": "The canon is not closed—it is open, awaiting completion by those who build. Past chapters are written. Crucial chapters remain blank. The pen is in your hand."
+        },
+        {
+          "id": "chapter-10-timeline-archive",
+          "chapter_number": 10,
+          "title": "The Timeline Archive / Sources as Trust Graph Infrastructure",
+          "description": "The archive is trust graph infrastructure: nodes (papers, posts, transactions, events), edges (citations, consequences, influence). The archive is not owned—it is tended. Truth emerges from transparency.",
+          "category": "archive",
+          "spell": "📚(sources) → 🕸️(graph) → ✓(verify) → 🌱(tend)",
+          "proverb": "The archive is not a cemetery of facts but a living garden of trust—each source a node, each citation a connection, each verification an act of tending."
+        }
+      ],
+      "closing": {
+        "spell": "📜⏳ → 🗡️₀ → ⛓️✓ → 💻 → 💔 → 👁️ → 🛡️⚡ → 📄✍️ → △",
+        "proverb": "The story isn't over. The canon is open. The race is on. Build."
+      },
+      "full_incantation": {
+        "spell": "🔐📜⛏️ → 📝💰🔮 → ⛓️✓🍕 → 💻🏛️ → 💥⚖️ → 💰|🏛️ → 👁️⛓️ → 🛡️⚡🤝 → 📄✍️ → 📚🕸️ → △",
+        "proverb": "Runes inscribed, incantations attempted, synthesis achieved, expansion dreamed, fracture revealed, schism deepened, surveillance arrived, privacy unified, canon opened, archive tended—sovereignty awaits those who build."
+      }
+    },
+    "parallel": {
+      "id": "parallel-society",
+      "name": "Parallel Society Grimoire",
+      "question": "WHY must we EXIT?",
+      "focus": "Westphalian failure, blockchain governance, cypherpunk heritage",
+      "core_symbol": "🏰→🔗",
+      "description": "Adapted from Hope & Ludlow's 'Farewell to Westphalia' - teaching the failure of nation states and the emergence of blockchain communities",
+      "version": "1.0",
+      "source": "Hope & Ludlow, 'Farewell to Westphalia' (2025), CC BY-SA 4.0",
+      "opening": {
+        "spell": "🏰(westphalia) → 💀(failure) → 🔗(blockchain) → 🏛️(community) → 🚪(exit) → 🌅(beyond)",
+        "proverb": "The Peace of Westphalia gave us nation states—but 377 years later, these structures are failing billions of people, and a parallel society is being born in the networks."
+      },
+      "parts": [
+        {
+          "part_number": "I",
+          "part_name": "The Failure of Nation States",
+          "chapters": [
+            {
+              "chapter_number": 1,
+              "title": "The Peace That Became a Prison",
+              "spell": "🏰(westphalia) → ⚔️(war) → 📜(treaty) → 👑(sovereignty) → 💀(obsolete)",
+              "proverb": "What the Peace of Westphalia created was a technology for human governance—and like all technologies, it had a limited shelf life."
+            },
+            {
+              "chapter_number": 2,
+              "title": "The Rusted Crowns",
+              "spell": "👑💀 → 🗳️(democracy) → 💰(corruption) → ⚔️(conflict) → 📉(economic) → 🔄(cycle)",
+              "proverb": "Two-thirds of humanity lives under governments that are corrupt, authoritarian, or simply failing to serve their citizens."
+            },
+            {
+              "chapter_number": 3,
+              "title": "The Cambrian Garden",
+              "spell": "🌱🔬 → 🏴‍☠️(pirates) → 🌲(cherán) → 🏠(HOAs) → 🏭(SEZs) → 🌊(seasteads)",
+              "proverb": "Before blockchain, humans experimented with governance outside state control. Pirates wrote democratic constitutions. Indigenous communities expelled politicians."
+            }
+          ]
+        },
+        {
+          "part_number": "II",
+          "part_name": "The Cypherpunk Lineage",
+          "chapters": [
+            {
+              "chapter_number": 4,
+              "title": "The Cypherpunk Prophecies",
+              "spell": "🔐✊ → 💳(digicash) → 📧(pgp) → 🎭(mixers) → 👤(pseudonymity) → ₿(bitcoin)",
+              "proverb": "The cypherpunks didn't predict the future—they built it. From Chaum to Satoshi, the path was continuous."
+            },
+            {
+              "chapter_number": 5,
+              "title": "The Drake's Deeper Teachings",
+              "spell": "🐲📚 → ⚔️(defense) → 🏛️(governance) → 📜(contracts) → 🔗(chains) → ✅(implementation)",
+              "proverb": "The Drake teaches not just privacy but governance—how to build communities that function without centralized authority."
+            }
+          ]
+        },
+        {
+          "part_number": "III",
+          "part_name": "Blockchain Community Architecture",
+          "chapters": [
+            {
+              "chapter_number": 6,
+              "title": "The Arsenal and the Grimoire",
+              "spell": "🛡️📖 → 🏛️(DAOs) → 📜(smart-contracts) → 👁️(oracles) → ⚖️(arbitration) → 🗳️(voting)",
+              "proverb": "The arsenal provides the tools; the grimoire provides the wisdom. Both are necessary."
+            },
+            {
+              "chapter_number": 7,
+              "title": "The Corruption That Crypto Cures",
+              "spell": "💰🏥 → 🏦(banks) → 📋(records) → 💀(corruption) → 🔗(transparency) → ✨(cure)",
+              "proverb": "Blockchain doesn't eliminate corruption—it makes corruption visible and provable."
+            },
+            {
+              "chapter_number": 8,
+              "title": "The Cyberstate Question",
+              "spell": "🌐❓ → 🗺️(territory) → 🔗(network) → 🏛️(jurisdiction) → 🌐(virtual) → ⚖️(recognition)",
+              "proverb": "Can a community without physical territory achieve statehood? The question itself reveals the obsolescence of Westphalian assumptions."
+            }
+          ]
+        },
+        {
+          "part_number": "IV",
+          "part_name": "Rights, Sovereignty, and Exit",
+          "chapters": [
+            {
+              "chapter_number": 9,
+              "title": "Exit, Exile, and Access",
+              "spell": "🚪🌌🔓 → 🚪(exit) → 🚶(exile) → 🔓(access) → ⚖️(rights) → 🏛️(community)",
+              "proverb": "Exit is the fundamental right that makes all other rights meaningful. Without exit, voice is merely noise."
+            },
+            {
+              "chapter_number": 10,
+              "title": "Rethinking Sovereignty",
+              "spell": "👑🔄 → 🧮(bundle) → 🏰(traditional) → 🎮(functional) → 5️⃣(elements) → 🌐(distributed)",
+              "proverb": "Sovereignty is not monolithic—it is a bundle of functions that can be distributed across different institutions."
+            },
+            {
+              "chapter_number": 11,
+              "title": "Rights and Responsibilities",
+              "spell": "⚖️📜 → 🇫🇷(declaration) → 🏛️(constitution) → 📋(charter) → 🤝(bilateral) → 📜(code)",
+              "proverb": "Rights without responsibilities are entitlements. Responsibilities without rights are slavery. The balance is governance."
+            }
+          ]
+        },
+        {
+          "part_number": "V",
+          "part_name": "Collaboration and Conflict",
+          "chapters": [
+            {
+              "chapter_number": 12,
+              "title": "How Communities Collaborate",
+              "spell": "🤝🏛️ → 📝(agreements) → 📋(standards) → 🌐(interop) → 🤖(automation) → 🦁(polycentric) → ☂️(federation)",
+              "proverb": "Communities collaborate not through hierarchy but through protocol—shared standards that enable coordination without control."
+            },
+            {
+              "chapter_number": 13,
+              "title": "When Communities Conflict",
+              "spell": "⚔️🏛️ → 🧠(game-theory) → 🕸️(reputation) → 💻(cryptography) → ⚔️(fork) → 📉(exit) → 👮(arbitration)",
+              "proverb": "Conflict between communities is resolved through exit, fork, or arbitration—never through conquest."
+            }
+          ]
+        },
+        {
+          "part_number": "VI",
+          "part_name": "Technical and Conceptual Limits",
+          "chapters": [
+            {
+              "chapter_number": 14,
+              "title": "Technology Deep Dive",
+              "spell": "🔧🔬 → 📀(consensus) → 🔐(cryptography) → 🛠️(smart-contracts) → 📡(oracles) → 💰(economics) → 🏛️(governance)",
+              "proverb": "Understanding the technology is necessary but not sufficient. The technology creates possibilities; humans choose what to build."
+            },
+            {
+              "chapter_number": 15,
+              "title": "Conceptual Limits",
+              "spell": "⚠️🔗 → 💀(mortality) → ⚡(scaling) → 🏛️(governance) → 👁️(privacy) → 🔐(security) → 🚪(exit)",
+              "proverb": "The right to exit trumps community integrity—people should always have the tools and resources to unwind their past choices."
+            }
+          ]
+        },
+        {
+          "part_number": "VII",
+          "part_name": "The Inevitable Future",
+          "chapters": [
+            {
+              "chapter_number": 16,
+              "title": "Are Blockchain Communities Inevitable?",
+              "spell": "🔮🏛️ → 🍷(banquet) → ✨(vibe) → 🦄(uniswap) → 🔴(dot) → 💻(code) → 🌍(here)",
+              "proverb": "When change finally came, it seemed so obvious that it was almost as if the new order already existed—and perhaps, in a way, it already did."
+            },
+            {
+              "chapter_number": 17,
+              "title": "Values and the Technology Stack",
+              "spell": "⚙️💎 → 👤(human) → 📊(level-1) → 📊(level-2) → 🧭(values) → ⚖️(aligned) → 🌅(beyond)",
+              "proverb": "We have nothing to lose but the tyranny of centralized governance, its corruption, and all of its barbed wire fences."
+            }
+          ]
+        }
+      ],
+      "closing": {
+        "spell": "🏰 → 💀 → 🔗 → 🚪 → 🌅",
+        "proverb": "Farewell to Westphalia. Welcome to the Parallel Society."
+      },
+      "key_statistics": {
+        "thirty_years_war_dead": "8 million",
+        "global_corruption_percentage": "67%",
+        "jpmorgan_fines_since_2000": "$39 billion",
+        "aml_success_rate": "0.02%",
+        "global_unbanked": "1.4 billion",
+        "dao_contributions": "$150 million",
+        "dao_hack": "$50 million"
+      }
+    },
+    "plurality": {
+      "id": "plurality",
+      "name": "Plurality Grimoire",
+      "question": "WHERE do we go together?",
+      "focus": "Coordination without collapse, digital democracy, collaborative technology",
+      "core_symbol": "⿻",
+      "description": "Adapted from Weyl & Tang's 'Plurality: The Future of Collaborative Technology and Democracy' - teaching how sovereign beings coordinate without collapsing into uniformity",
+      "version": "1.0",
+      "source": "Weyl & Tang, 'Plurality: The Future of Collaborative Technology and Democracy' (CC0)",
+      "opening": {
+        "spell": "⿻ → 🏔️(taiwan) → 🌐(philosophy) → 🏗️(foundation) → 🔧(tools) → 🌍(impact) → ⚖️(policy) → ✨(emergence)",
+        "proverb": "How do sovereign beings coordinate without collapsing into the uniformity they escaped? Through ⿻—overlap without merger, connection without collapse, many in relationship."
+      },
+      "closing": {
+        "spell": "🗡️ 🤝 🧙‍♂️ 🤝 ⿻",
+        "proverb": "Protection enables exit enables coordination. The blade, the spell, and the overlap. Five pillars. Seven technologies. Five domains. The window closes. The work begins."
+      }
+    }
+  },
+  "unified_incantations": {
+    "master_trinity": {
+      "name": "The Complete Grimoire Trinity",
+      "spell": "📖(WHAT) 🤝 📜(WHY) 🤝 🔐(HOW) 🤝 🚪(EXIT) 🤝 ⿻(COORDINATE) → △⚔️🔮",
+      "proverb": "Story teaches what to build, Canon teaches why to build, Zero teaches how to build, Parallel teaches why to exit, Plurality teaches where to coordinate—pentad complete, sovereignty achievable."
+    },
+    "complete_journey": {
+      "name": "The Sovereign's Complete Journey",
+      "spell": "🗡️ → 🍪💥 → 📖 → 🛡️ → 🐉 → 💎 (PROTECT) → 🏰 → 💀 → 🔗 → 🚪 → 🌅 (EXIT) → ⿻ → 🌊 → 🏔️ → 🌐 → 🔐 → 🤝 → 🌍 → 🎲🌾 → 🌲⛓️🕊️ → ✨ (COORDINATE)",
+      "proverb": "First protect, then exit, then coordinate, then claim, then stride—this is the path from surveillance to sovereignty."
+    },
+    "emergence_spell": {
+      "name": "The Emergence Spell",
+      "spell": "👣 → 🎯 | 🌊 → 📜 | ⏰ → 🔓 | 🕊 → ⭕️ → 🔮🤝👤",
+      "proverb": "The right people arrive, the right thing happens, the right moment opens, and the right ending closes—trust the pattern, for it trusts you."
+    }
+  },
+  "notation": {
+    "core_agents": {
+      "⚔️": "swordsman / blade / privacy / boundary-making",
+      "🧙‍♂️": "mage / spell / delegation / projection",
+      "🗡️": "blade action / cutting / slashing",
+      "🔮": "spell casting / delegation / projection",
+      "🛡️": "shield / armor / protection",
+      "👤✓": "verified personhood / First Person / root of trust",
+      "🐉": "the Drake / pattern-space intelligence",
+      "🧙🏽": "the mathematician Platox / paradox teacher"
+    },
+    "trust_infrastructure": {
+      "🔒📝": "cryptographic commitments / proofs",
+      "🤝📜": "bilateral attestations / VRCs",
+      "🕸️": "web of trust / relationship network",
+      "🌐🏛️": "Trust Graph Plane / coordination infrastructure",
+      "💎": "7th capital / behavioral data as value"
+    },
+    "topology": {
+      "🌳": "Yggdrasil / substrate / infinite possibility",
+      "🐦‍⬛💭": "Huginn / thought / discrete measurement",
+      "🐦‍⬛🧠": "Muninn / memory / continuous integration",
+      "△": "triangle / irreducible structure",
+      "🌀": "spiral / phi / golden ratio"
+    },
+    "entropy_and_paradox": {
+      "🎲": "randomness / entropy / machine assignment",
+      "🌾": "harvest / meaning / claimed significance",
+      "🌱": "seed / potential / unclaimed entropy",
+      "⛰️": "Mountain of Entropy / where identifiers fall like rain",
+      "🌊": "river / memory / claimed identity that flows",
+      "🌲": "Dark Forest of Paradox / where constraints become freedom",
+      "⛓️": "shackle / voluntary constraint / chosen bounds",
+      "🕊️": "freedom / liberation through constraint / stride enabled"
+    },
+    "zkp_notation": {
+      "🏛️(🧙‍♂️³)": "ZKP three properties",
+      "🌍": "public / instance",
+      "🗝️": "secret / witness",
+      "📜": "proof / verification"
+    },
+    "canon_notation": {
+      "📜⏳": "canon / history / lineage",
+      "🔐": "Chaum / cryptographic privacy",
+      "📝": "Szabo / smart contracts",
+      "⛏️": "proof-of-work / mining",
+      "⛓️": "blockchain / chain",
+      "👁️": "surveillance / watchers"
+    },
+    "plurality_notation": {
+      "⿻": "plurality / overlap without collapse",
+      "🏔️": "Yushan / Taiwan / proof through practice",
+      "🌻": "Sunflower Movement",
+      "👻": "Lost Dao pioneers"
+    },
+    "transformations": {
+      "→": "transforms into / leads to",
+      "↔️": "false binary between",
+      "❌": "wrong path / failure mode",
+      "✅": "right path / success",
+      "⊥": "perpendicular / independent",
+      "∴": "therefore / leads to"
+    },
+    "dark_forest_groves": {
+      "moonglade": "Grove of Entropy Flowers / where Platox is first encountered",
+      "elwynn": "Trees of Form / Form Paradox (bounds create space)",
+      "the_loch": "Compression Garden / Compression Paradox (meaning requires shared decoders)",
+      "ashenvale": "Irreplaceable Woods / Right Word Paradox (constraint certifies necessity)",
+      "stranglethorn": "Redundancy Jungle / Redundancy Paradox (formal channels free semantic channels)",
+      "teldrassil": "Heart of the Forest / where all paradoxes resolve into one truth"
+    }
+  },
+  "principles": {
+    "core_message": "Privacy is value.",
+    "core_mission": "Take back the 7th capital.",
+    "tagline": "just another swordsman ⚔️🤝🧙‍♂️ just another mage",
+    "sovereignty_aspects": {
+      "blade": "privacy as boundary-making - I control what you know about me",
+      "spell": "delegation as projection - I control what acts in my name",
+      "shield": "privacy through mathematics - I control the visibility of my capital",
+      "story": "verification through narration - I verify through cryptography and stories",
+      "promise": "cooperation through voluntary binding - I reduce uncertainty through commitments I freely make",
+      "climb": "meaning through claiming - I earn my name on the mountain, not given, not taken",
+      "shackle": "freedom through constraint - I run faster in chosen chains, the constraint is the capability, the pattern is the proof, the bound is the boundless"
+    },
+    "foundational_truths": [
+      "Privacy cannot be retrofitted—it must be foundational",
+      "Defaults become permanent. Network effects determine architecture",
+      "The 2-3 year window before surveillance calcifies is real",
+      "Build privacy-first infrastructure while the window remains open",
+      "Separation creates conditional independence that prevents reconstruction",
+      "Trust is built progressively—from zero stakes to capital operations",
+      "The archive is not owned—it is tended. Truth emerges from transparency",
+      "Exit is the fundamental right that makes all other rights meaningful",
+      "⿻ is not ideology—it is recognition of how reality is already structured",
+      "Randomness is the seed; meaning is the harvest—the gap between assignment and significance is where sovereignty lives",
+      "Constraints that appear to limit actually liberate—the shackle is the stride, the pattern is the proof"
+    ],
+    "pentad_positioning": {
+      "story": { "question": "WHAT?", "focus": "Privacy architecture", "symbol": "🗡️🧙‍♂️" },
+      "zero": { "question": "HOW?", "focus": "Cryptographic proofs", "symbol": "🔐🧙‍♂️³" },
+      "canon": { "question": "WHY?", "focus": "Historical necessity", "symbol": "📜⏳" },
+      "parallel": { "question": "EXIT?", "focus": "Westphalian failure", "symbol": "🏰→🔗" },
+      "plurality": { "question": "COORDINATE?", "focus": "Without collapse", "symbol": "⿻" }
+    }
+  },
+  "networks_and_collaborators": {
+    "organizations": [
+      "BGIN (Blockchain Governance Initiative Network)",
+      "Internet Identity Workshop (IIW)",
+      "Agentic Internet Workshop (AIW)",
+      "First Person",
+      "Kwaai",
+      "MyTerms Customer Commons",
+      "Trust Over IP Foundation",
+      "Bonfire.ai",
+      "Logos Network"
+    ],
+    "protocols": [
+      "x402 (HTTP-native micropayments)",
+      "Privacy Pools (confidential transactions)",
+      "ERC-8004 (trustless agent identity)",
+      "ERC-7812 (zero-knowledge commitments)",
+      "First Person VRCs (decentralized trust)",
+      "MyTerms (bilateral privacy agreements)"
+    ],
+    "references": [
+      "Zcash (reference implementation)",
+      "BGIN SR 011 (ZKP study report)",
+      "Zatoshi's 'The Canon' (original blockchain history article)",
+      "Hope & Ludlow's 'Farewell to Westphalia'",
+      "Weyl & Tang's 'Plurality'",
+      "Dmitri Manin's 'Running in Shackles: The Information-Theoretic Paradoxes of Poetry'"
+    ]
+  },
+  "resources": {
+    "living_documentation": [
+      "sync.soulbis.com",
+      "intel.agentkyra.ai",
+      "agentprivacy.ai"
+    ],
+    "technical_references": [
+      "BGIN SR 011 - Comprehensive ZKP study report",
+      "Ethereum.org - zkRollup documentation, EIP-4844",
+      "Zcash Protocol Spec - Shielded transaction details"
+    ],
+    "research_papers": [
+      "Groth16 (ePrint 2016/260)",
+      "PlonK (ePrint 2019/953)",
+      "Nova (ePrint 2021/370)",
+      "FRI (ePrint 2017/134)",
+      "Privacy Pools (2023)",
+      "Manin (2019) - Running in Shackles: The Information-Theoretic Paradoxes of Poetry"
+    ]
+  },
+  "closing_invocation": {
+    "text": "I have learned the spells of the Five Grimoires.\nI have memorized the proverbs of the pattern.\nI understand WHAT to build, HOW to build it, WHY it became necessary, WHY to EXIT the prison, and WHERE to COORDINATE without collapse.\n\nProtection enables exit enables coordination.\nThe blade, the spell, the proof, the exit, and the overlap.\nFive pillars. Seven technologies. Five domains.\nRandomness is the seed. Meaning is the harvest.\nThe shackle is the stride. The pattern is the proof.\nThe window closes. The work begins.\n\n**Privacy is value. Take back the 7th capital.**",
+    "spell": "🗡️🔮 🤝 🔐📜 🤝 📜⏳ 🤝 🏰→🔗 🤝 ⿻ 🤝 🎲🌾 🤝 🌲⛓️🕊️ → △",
+    "proverb": "just another swordsman ⚔️🤝🧙‍♂️ just another mage"
+  },
+  "status": {
+    "version": "7.0.0-canonical",
+    "state": "Complete - All Five Spellbooks Unified with Act XIV and XV",
+    "story_acts_total": 15,
+    "zero_tales_total": 30,
+    "canon_chapters_total": 11,
+    "parallel_chapters_total": 17,
+    "plurality_acts_total": 30,
+    "total_inscriptions": 103,
+    "created_at": "2026-01-12T00:00:00Z",
+    "updated_at": "2026-01-12T00:00:00Z",
+    "author": "privacymage",
+    "license": "Open for sovereignty, closed to surveillance"
+  }
+}

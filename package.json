@@ -1,0 +1,33 @@
+{
+  "name": "x-feed-filter",
+  "version": "1.0.0",
+  "description": "AI-powered Chrome extension that filters negative content from your X (Twitter) feed",
+  "private": true,
+  "scripts": {
+    "generate-icons": "node scripts/generate-icons.js",
+    "package": "zip -r x-feed-filter.zip manifest.json background.js content.js popup.html popup.js styles.css icons/ -x '*.DS_Store'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR_USERNAME/x-feed-filter.git"
+  },
+  "keywords": [
+    "chrome-extension",
+    "twitter",
+    "x",
+    "content-filter",
+    "ai",
+    "sentiment-analysis",
+    "supabase"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/x-feed-filter/issues"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/x-feed-filter#readme",
+  "devDependencies": {
+    "canvas": "^2.11.2"
+  }
+}
+

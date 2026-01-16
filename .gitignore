@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+*.zip
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+config.js
+secrets.js
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+
+# Temporary files
+*.tmp
+*.temp
+
+
