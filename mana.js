@@ -17,16 +17,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    document.getElementById('learnSpell')?.addEventListener('click', async () => {
-        const output = document.getElementById('castOutput');
-        const text = output.innerText || output.textContent;
-        const btn = document.getElementById('learnSpell');
-        const btnText = btn.querySelector('span:last-child');
+    document.getElementById('learnSpell')?.addEventListener('click', learnSpell);
+    document.getElementById('inscribeSpell')?.addEventListener('click', inscribeSpell);
+
+    document.getElementById('copySpell')?.addEventListener('click', async () => {
+        const refineInput = document.getElementById('refineInput');
+        const text = refineInput?.value || '';
+        if (!text.trim()) { alert('Nothing to copy'); return; }
+        const btn = document.getElementById('copySpell');
         try {
             await navigator.clipboard.writeText(text);
-            btn.classList.add('learned');
-            if (btnText) btnText.textContent = 'Cast';
-            setTimeout(() => { if (btnText) btnText.textContent = 'Learn'; btn.classList.remove('learned'); }, 2000);
+            btn.querySelector('span:last-child').textContent = 'Copied!';
+            setTimeout(() => btn.querySelector('span:last-child').textContent = 'Copy', 2000);
         } catch (err) { alert('Failed to copy: ' + err.message); }
     });
 
@@ -58,6 +60,80 @@ async function loadHistory() {
 }
 
 function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text || ''; return div.innerHTML; }
+
+function stripMarkdown(text) {
+    if (!text) return '';
+    return text
+        .replace(/\*\*(.+?)\*\*/g, '$1')  // **bold**
+        .replace(/\*(.+?)\*/g, '$1')        // *italic*
+        .replace(/__(.+?)__/g, '$1')          // __bold__
+        .replace(/_(.+?)_/g, '$1')            // _italic_
+        .replace(/`(.+?)`/g, '$1')          // `code`
+        .replace(/^#+\s*/gm, '')             // # headers
+        .replace(/^[\-\*]\s+/gm, '')       // - bullets
+        .trim();
+}
+
+
+async function learnSpell() {
+    const btn = document.getElementById('learnSpell');
+    const btnText = btn.querySelector('span:last-child');
+    const refineInput = document.getElementById('refineInput');
+    btn.disabled = true;
+    if (btnText) btnText.textContent = 'Learning...';
+    try {
+        const castProverbs = refineInput?.value?.trim();
+        if (!castProverbs) {
+            alert('Cast spells first to generate proverbs!');
+            return;
+        }
+        // Create consolidated proverb from the cast proverbs, then a short spell
+        const consolidatedResponse = await fetch('https://cloud-api.near.ai/v1/chat/completions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (await getApiKey()) },
+            body: JSON.stringify({
+                model: 'openai/gpt-oss-120b',
+                messages: [
+                    { role: 'system', content: 'You combine proverbs into wisdom. Output format exactly:\nSPELL: [3-5 emojis with arrows]\nPROVERB: [one sentence]' },
+                    { role: 'user', content: 'Create ONE unified proverb that captures the essence of all these, then a SHORT spell (3-5 emojis with arrows showing transformation):\n\n' + castProverbs }
+                ]
+            })
+        });
+        const consolidatedJson = await consolidatedResponse.json();
+        const result = consolidatedJson.choices?.[0]?.message?.content || 'SPELL: ✨→🔮\nPROVERB: Wisdom emerges from many voices.';
+        // Parse spell and proverb
+        const spellMatch = result.match(/SPELL:\s*(.+)/i);
+        const proverbMatch = result.match(/PROVERB:\s*(.+)/i);
+        const consolidatedSpell = stripMarkdown(spellMatch ? spellMatch[1].trim() : '✨→🔮');
+        const consolidatedProverb = stripMarkdown(proverbMatch ? proverbMatch[1].trim() : result.trim());
+        const learnBox = document.getElementById('learnBox');
+        document.getElementById('learnSpellString').textContent = consolidatedSpell;
+        document.getElementById('learnProverb').textContent = '"' + consolidatedProverb + '"';
+        learnBox.classList.add('active');
+    } catch (e) {
+        alert('Error learning spell: ' + e.message);
+    } finally {
+        btn.disabled = false;
+        if (btnText) btnText.textContent = 'Learn';
+    }
+}
+
+async function inscribeSpell() {
+    const spellString = document.getElementById('learnSpellString')?.textContent || '';
+    const proverb = document.getElementById('learnProverb')?.textContent || '';
+    if (!spellString || !proverb) {
+        alert('Learn a spell first!');
+        return;
+    }
+    const text = spellString + '\n\n' + proverb;
+    const btn = document.getElementById('inscribeSpell');
+    try {
+        await navigator.clipboard.writeText(text);
+        btn.classList.add('learned');
+        btn.textContent = 'Inscribed!';
+        setTimeout(() => { btn.textContent = 'Inscribe'; btn.classList.remove('learned'); }, 2000);
+    } catch (err) { alert('Failed to inscribe: ' + err.message); }
+}
 
 async function castSpell() {
     const btn = document.getElementById('castSpell');
@@ -94,6 +170,7 @@ async function castSpell() {
         output.innerHTML = msg.replace(/\n/g, '<br>');
         if (refineInput) refineInput.value = msg;
         result.classList.add('active');
+
     } catch (error) {
         output.textContent = 'Error casting: ' + error.message;
         result.classList.add('active');

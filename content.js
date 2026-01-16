@@ -91,7 +91,12 @@ class MageMode {
     startObserving() {
         if (this.observer) return;
         console.log('[Mage Mode] Starting to observe feed...');
-        this.scanFeed();
+        // Delay initial scan to let tweets load
+        setTimeout(() => this.scanFeed(), 500);
+        // Periodic rescan to catch missed posts
+        this.rescanInterval = setInterval(() => {
+            if (this.isEnabled && this.pendingBatch.length === 0) this.scanFeed();
+        }, 5000);
         this.observer = new MutationObserver(mutations => {
             if (mutations.some(m => m.addedNodes.length > 0)) this.scanFeed();
         });
@@ -102,6 +107,10 @@ class MageMode {
         if (this.observer) {
             this.observer.disconnect();
             this.observer = null;
+        }
+        if (this.rescanInterval) {
+            clearInterval(this.rescanInterval);
+            this.rescanInterval = null;
         }
     }
 

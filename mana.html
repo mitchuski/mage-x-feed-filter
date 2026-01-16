@@ -58,6 +58,11 @@
         .link-cell { text-align: center; }
         .link-cell a { color: #6495ed; text-decoration: none; font-size: 1.2rem; transition: all 0.2s ease; display: inline-block; }
         .link-cell a:hover { color: #9370db; transform: scale(1.2); }
+        .learn-box { margin-top: 15px; padding: 15px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(147, 112, 219, 0.1)); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 8px; display: none; }
+        .learn-box.active { display: block; }
+        .learn-box h4 { color: #d4af37; margin-bottom: 8px; font-size: 0.9rem; }
+        .learn-box .spell-string { font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 10px; }
+        .learn-box .consolidated-proverb { color: #c0c0ff; font-style: italic; font-family: Georgia, serif; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -76,7 +81,14 @@
             <h3>✨ Spell Cast</h3>
             <p id="castOutput"></p>
             <div style="display:flex;gap:10px;margin-top:12px;">
+                <button class="learn-btn" id="copySpell"><span>📋</span><span>Copy</span></button>
                 <button class="learn-btn" id="learnSpell"><span>🧙</span><span>Learn</span></button>
+            </div>
+            <div class="learn-box" id="learnBox">
+                <h4>🧙 Learned Spell</h4>
+                <div class="spell-string" id="learnSpellString"></div>
+                <div class="consolidated-proverb" id="learnProverb"></div>
+                <button class="learn-btn" id="inscribeSpell" style="margin-top:12px;"><span>📜</span> Inscribe</button>
             </div>
             <div class="refine-section">
                 <textarea class="refine-input" id="refineInput" placeholder="Edit the proverbs here and recast..."></textarea>
