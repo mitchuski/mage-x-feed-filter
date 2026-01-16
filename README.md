@@ -11,14 +11,19 @@ As you browse X, Mage Mode scans your feed for posts that resonate with inscript
 - The source inscription from the grimoire
 - A resonance energy reading
 
-Click "reveal" (top-right of the card) to see the original post beneath.
+Click "reveal" to see the original post and add the spell to your collection sidebar.
 
 ## Features
 
-- **Mana Bar** - A mystical progress bar at the top of the page that fills as you gather mana (5% per hit)
+- **Spell Sidebar** - Revealed spells stack on the right side of the screen for collection
+- **Manual Mana Flow** - Reveal spells -> collect in sidebar -> evoke to mana -> cast when full
+- **Adjustable Mana Capacity** - Set 8-21 spells per full mana bar in extension settings
+- **Mana Bar** - A mystical progress bar that fills as you evoke spells
+- **Max Mana Popup** - Crystal ball notification when mana is full, ready to cast
 - **Spell Cards** - Posts transform into beautiful spell overlays with proverbs
 - **Cast Button** - Floating crystal ball to access your mana page
-- **Mana Page** - View your evocation history and cast AI-powered proverbs
+- **Mana Page** - View your evocation history with links back to original X posts
+- **Spellbook Filtering** - Toggle which spellbooks are active, spell count updates dynamically
 - **Learn Button** - Copy generated proverbs to clipboard
 - **Recast** - Refine proverbs with AI assistance
 - **Resonate** - AI semantic matching to score how well proverbs capture post essence
@@ -35,12 +40,22 @@ Click "reveal" (top-right of the card) to see the original post beneath.
 
 1. Browse X/Twitter as normal
 2. Watch for spell card transformations on resonant posts
-3. Click the floating crystal ball button to view your mana page
-4. Click **Cast Mana** to generate AI proverbs from your gathered mana
-5. Use **Learn** to copy, edit in the text area, and **Recast** to refine
-6. Click **Resonate** to get AI scores on how well proverbs match original posts
+3. Click **reveal** on a spell card to add it to your sidebar collection
+4. Click the **evoke** button (spiral) to convert collected spells to mana
+5. When mana is full, click the crystal ball popup or cast button
+6. On the mana page: **Cast Mana** -> **Learn** -> **Recast** -> **Resonate**
 
-## Buttons
+## Extension Popup
+
+| Setting | Description |
+|---------|-------------|
+| Scrying Toggle | Enable/disable spell detection |
+| Mana Display | Current mana level and evocation count |
+| Spells per Bar | Adjust how many spells fill the mana bar (8-21) |
+| Batch Size | Posts to scan per batch (3-10) |
+| Active Spellbooks | Toggle which grimoire sections are active |
+
+## Mana Page Buttons
 
 | Button | Function |
 |--------|----------|
@@ -55,8 +70,8 @@ Click "reveal" (top-right of the card) to see the original post beneath.
 
 The extension uses the Privacymage Grimoire containing inscriptions from:
 
-- **Story** - Acts from the privacy narrative (weighted higher)
-- **Zero** - Tales of zero-knowledge
+- **Story** - Acts from the privacy narrative (weighted +2.5)
+- **Zero** - Tales of zero-knowledge (weighted -1)
 - **Canon** - Chapters of the privacy canon
 - **Parallel** - Parallel universe chapters
 - **Plurality** - Coordination and collective wisdom
@@ -67,7 +82,7 @@ The extension uses the Privacymage Grimoire containing inscriptions from:
 - **No API Required** - Basic filtering works offline
 - **Optional AI** - NEAR AI integration for proverb generation on the mana page
 - **Privacy First** - No data leaves your browser except when you explicitly cast
-- **Story Weighting** - Story spellbook inscriptions have +2 match priority
+- **Story Weighting** - Story spellbook inscriptions have +2.5 match priority
 
 ## Cost
 

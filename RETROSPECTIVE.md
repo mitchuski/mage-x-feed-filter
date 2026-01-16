@@ -1,114 +1,160 @@
 # Mage Mode - Development Retrospective
 
 > Build Date: 2026-01-16
-> Version: 1.3.0
+> Version: 1.4.0
 
 ---
 
 ## Quick Start for Tomorrow
 
-**Where we left off:** All features complete, ready for git push.
+**Where we left off:** v1.4.0 complete with spell sidebar, manual mana flow, and dynamic settings.
 
 **To test:**
 1. Load extension in `chrome://extensions/` (Developer mode)
 2. Go to x.com and scroll to see spell cards
-3. Click crystal ball -> Mana page
-4. Test flow: Cast Mana -> Edit -> Recast -> Resonate
+3. Click "reveal" on spell cards - spells collect in right sidebar
+4. Click evoke (spiral) to convert to mana
+5. When mana bar fills, click crystal ball popup to cast
 
 **Potential issues to watch:**
-- If "Extension context invalidated" error appears, refresh X.com page
-- Resonate button requires Cast Mana first (needs proverbs to score)
+- If "Extension context invalidated" error appears, close X.com tabs and reopen
+- CORS errors about proxsee.pscp.tv are Twitter's own - ignore them
 
 **Next steps to consider:**
-- Push to GitHub: `https://github.com/mitchuski/mage-x-feed-filter`
-- Test the full Resonate flow with more evocations
-- Consider adjusting story spellbook weighting if still not showing enough
-- Mana bar fills at 5% - may want to tune based on usage
+- Test full flow with various spellbook combinations
+- Consider adding tweetId to sidebar spells for mana page links
+- Tune story/zero weighting based on usage patterns
 
 ---
 
-## Latest Update Summary (v1.3.0)
+## Latest Update Summary (v1.4.0)
 
-Major improvements to spell matching, resonance scoring, and UI.
+Major UX overhaul: Manual mana collection flow with spell sidebar.
 
 ### Key Changes
 
-1. **Resonate Button (NEW)**
-   - AI semantic matching between proverbs and original posts
-   - Scores each proverb 0-100 on how well it captures the post essence
-   - Color-coded: green (70+), yellow (40-69), red (<40)
+1. **Spell Collection Sidebar (NEW)**
+   - Revealed spells stack on right side of screen
+   - Click spell emoji to remove from collection
+   - Expands when adding spells, compresses after evoke
+   - Shows total evoked spells badge
 
-2. **Story Spellbook Weighting**
-   - Story inscriptions get +2 priority in matching
-   - Should see more first-person narrative spells now
+2. **Manual Mana Flow (NEW)**
+   - Mana no longer auto-accumulates
+   - User clicks reveal -> spell goes to sidebar
+   - User clicks evoke (spiral) -> saves to history + adds mana
+   - User clicks cast (crystal ball) -> opens mana page
 
-3. **Mana Bar Adjustment**
-   - Fills 5% per hit instead of 10%
-   - Takes longer to max out, more satisfying progression
+3. **Adjustable Mana Capacity (NEW)**
+   - Slider in popup: 8-21 spells per full bar
+   - Affects how quickly mana bar fills
+   - Stored in chrome.storage.local
 
-4. **Reveal Button Fix**
-   - Moved to top-right corner of overlay
-   - Now always clickable with z-index: 110
-   - Better UX for revealing original posts
+4. **Max Mana Popup (NEW)**
+   - Crystal ball emoji appears when mana hits 100%
+   - "max mana, cast your spell" message
+   - Click to reset mana and open mana page
+   - Auto-hides after 10 seconds
 
-5. **Extension Context Handling**
-   - Added check for `chrome.runtime?.id` before messaging
-   - Prevents errors when extension reloads while on X.com
+5. **Dynamic Spell Count (NEW)**
+   - Popup spell count updates when toggling spellbooks
+   - Shows only spells from active spellbooks
+   - Uses grimoireStats.bySpellbook for filtering
 
-6. **Recast Markdown Fix**
-   - AI now outputs plain text only
-   - No more ** doubling on refinement
+6. **Mana Page Links (NEW)**
+   - History table includes Link column
+   - Links back to original X posts (when tweetId available)
+
+7. **Spellbook Scoring Adjustments**
+   - Story spellbook: +2.5 (increased from +2)
+   - Zero spellbook: -1 (reduced to show less often)
+
+8. **Extension Context Handling (IMPROVED)**
+   - Added isContextValid() helper method
+   - Checks context before scanFeed() and processBatch()
+   - Try-catch around all click handlers
+   - Auto-refreshes page if context invalidated
+
+9. **New Mage Icon**
+   - Custom mage emoji icon for extension
+   - Added to manifest.json and HTML favicons
 
 ---
 
-## Files Modified in v1.3.0
+## Files Modified in v1.4.0
 
 | File | Changes |
 |------|---------|
-| mana.html | Added Resonate button |
-| mana.js | Added resonateSpell function, AI semantic scoring |
-| background.js | Story +2 weighting, mana fill 5%, recentMatches |
-| content.js | Reveal button position, extension context check |
-| styles.css | .mage-reveal-btn positioning (top-right, z-index 110) |
+| content.js | Spell sidebar, manual mana flow, evoke button, context validation |
+| popup.js | Mana capacity slider, dynamic spell count, spellbook filtering |
+| popup.html | Mana capacity slider UI, updated layout |
+| background.js | Story +2.5 weighting, zero -1 weighting |
+| mana.html | Link column in history table, title update |
+| mana.js | Link rendering for tweet history |
+| styles.css | Sidebar styles, spell items, evoke button, max mana popup |
+| manifest.json | New mage icon |
 
 ---
 
 ## Architecture
 
 ```
-Tweet -> Background.js (local keywords) -> Match Result -> Spell Card
+Tweet -> Background.js (local keywords) -> Match Result -> Spell Overlay
                                                     |
-                                              Mana Accumulates
+                                            User clicks "reveal"
                                                     |
-                                    Mana Page -> NEAR AI -> Line-by-line Proverbs
+                                        Spell added to Sidebar
                                                     |
-                                        Edit & Recast / Resonate
+                                    User clicks Evoke (spiral button)
+                                                    |
+                                    Saved to History + Mana Added
+                                                    |
+                                    Mana Full -> Crystal Ball Popup
+                                                    |
+                                        Mana Page -> NEAR AI -> Proverbs
 ```
 
-### Matching Algorithm (v1.3.0)
+### Matching Algorithm (v1.4.0)
 ```javascript
 // For each tweet against each inscription:
 // - Random base: 0-3 points (for variety)
-// - Story spellbook: +2 points
+// - Story spellbook: +2.5 points (increased)
+// - Zero spellbook: -1 point (decreased)
 // - Keywords: +0.5 points each
 // - Emoji match: +1 point
 // - Recent match penalty: -1 to -10 points
 //
 // Selection: Weighted random from all valid candidates
-// Resonance: Random 32-88 (display only - not semantic)
 ```
 
-### Resonance Scoring (v1.3.0 - Resonate button)
+### Mana Calculation (v1.4.0)
 ```javascript
-// AI rates proverb-post pairs:
-// Prompt: "Rate each proverb on how well it captures the theme/meaning"
-// Output: Scores 0-100 per line
-// Display: Color-coded score badges
+// manaCapacity: user setting (8-21, default 10)
+// currentBarSpells: spells evoked since last cast
+// newMana = Math.min(100, Math.floor((currentBarSpells / manaCapacity) * 100))
 ```
 
 ---
 
 ## Features
+
+### Sidebar Controls
+| Element | Function |
+|---------|----------|
+| Spell emoji | Click to remove from collection |
+| Counter | Shows number of spells ready to evoke |
+| Evoke button (spiral) | Convert collected spells to mana |
+| Total badge | Shows lifetime evoked spells |
+
+### Extension Popup
+| Setting | Function |
+|---------|----------|
+| Scrying toggle | Enable/disable spell detection |
+| Mana bar | Current mana level display |
+| Spells per bar | 8-21 slider for mana capacity |
+| Batch size | 3-10 posts per scan |
+| Spellbook chips | Toggle active grimoire sections |
+| Spell count | Updates based on active spellbooks |
 
 ### Mana Page Buttons
 | Button | Emoji | Function |
@@ -120,27 +166,32 @@ Tweet -> Background.js (local keywords) -> Match Result -> Spell Card
 | Recast | - | Refine edited text with AI |
 | Resonate | - | AI scores proverb-post semantic match |
 
-### Spell Matching
-- Local keyword/emoji matching against grimoire
-- Story spellbook weighted +2 for priority
-- Tracks recent matches to ensure variety
-- Energy types: mystical, resonant, aligned, attuned, harmonic
-
 ---
 
 ## Technical Details
 
 - **NEAR AI Model**: openai/gpt-oss-120b
 - **API Endpoint**: https://cloud-api.near.ai/v1/chat/completions
-- **Local Storage**: evocationHistory, manaLevel, formedProverbs
+- **Local Storage Keys**: evocationHistory, manaLevel, manaCapacity, currentBarSpells, totalEvokedSpells, enabledSpellbooks
 - **Max History**: 100 evocations
-- **Mana Per Hit**: 5%
+- **Default Mana Capacity**: 10 spells per bar
 
 ---
 
 ## Version History
 
-### v1.3.0 (Current)
+### v1.4.0 (Current)
+- Spell collection sidebar on right side
+- Manual mana flow (reveal -> sidebar -> evoke -> cast)
+- Adjustable mana capacity (8-21 spells per bar)
+- Max mana popup with crystal ball
+- Dynamic spell count based on active spellbooks
+- Mana page links to original X posts
+- Story +2.5 weighting, zero -1 weighting
+- Improved extension context validation
+- New mage emoji icon
+
+### v1.3.0
 - Resonate button for AI semantic scoring
 - Story spellbook +2 weighting
 - Mana bar fills 5% per hit
@@ -171,12 +222,12 @@ Tweet -> Background.js (local keywords) -> Match Result -> Spell Card
 
 | Issue | Status | Solution |
 |-------|--------|----------|
-| Extension context invalidated | Fixed | Check `chrome.runtime?.id` before messaging |
-| Reveal button not clickable | Fixed | Moved to top-right with z-index 110 |
-| Resonance always 95/100 | Fixed | Now random 32-88 for display, use Resonate for semantic |
-| Recast adds ** markdown | Fixed | AI prompt: "Output plain text only" |
-| Same spells repeating | Fixed | recentMatches tracking, weighted selection |
-| Story spells not showing | Fixed | +2 weighting for story spellbook |
+| Extension context invalidated | Fixed | isContextValid() check + try-catch + auto-refresh |
+| CORS proxsee.pscp.tv errors | N/A | Twitter's own API issue, unrelated to extension |
+| Mana capacity slider not updating | Fixed | Added event listener in popup.js |
+| Spell count not updating with spellbooks | Fixed | updateSpellCount() uses bySpellbook counts |
+| Spells taking mana without overlay | Fixed | Made mana fully manual via evoke button |
+| Zero spells appearing too often | Fixed | Added -1 weighting to zero spellbook |
 
 ---
 

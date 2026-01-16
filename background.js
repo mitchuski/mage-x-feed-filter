@@ -49,7 +49,8 @@ function findResonantSpell(tweets, enabledSpellbooks) {
         const txt = tweet.text.toLowerCase();
         active.forEach(insc => {
             let score = Math.random() * 3;
-            if (insc.spellbook === 'story') score += 2;
+            if (insc.spellbook === 'story') score += 2.5;
+            if (insc.spellbook === 'zero') score -= 1;
             insc.keywords.forEach(kw => { if (txt.includes(kw)) score += 0.5; });
             [...insc.spell].forEach(e => { if (tweet.text.includes(e)) score += 1; });
             const recentIdx = recentMatches.indexOf(insc.id);
@@ -76,21 +77,15 @@ function findResonantSpell(tweets, enabledSpellbooks) {
         
         const energies = ['mystical', 'resonant', 'aligned', 'attuned', 'harmonic'];
         const resonance = Math.min(88, Math.max(32, Math.floor(30 + Math.random() * 35 + best.score * 2)));
-        const result = { tweetIndex: best.idx, inscription: best.match, resonanceScore: resonance, energy: energies[Math.floor(Math.random() * energies.length)] };
-        storeEvocation(tweets[best.idx], result);
+        const result = { tweetIndex: best.idx, tweet: tweets[best.idx], inscription: best.match, resonanceScore: resonance, energy: energies[Math.floor(Math.random() * energies.length)] };
+        // Don't auto-store - let content script store after overlay shown
         console.log('[Mage Mode] Match:', best.match.title, 'resonance:', resonance);
         return { result };
     }
     return { result: null };
 }
 
-async function storeEvocation(tweet, result) {
-    const data = await chrome.storage.local.get(['evocationHistory', 'manaLevel']);
-    const history = data.evocationHistory || [];
-    history.unshift({ tweet: tweet.text.substring(0, 280), tweetId: tweet.id, inscription: { id: result.inscription.id, title: result.inscription.title, spell: result.inscription.spell, spellbook: result.inscription.spellbook }, resonanceScore: result.resonanceScore, energy: result.energy, timestamp: new Date().toISOString() });
-    if (history.length > 100) history.length = 100;
-    await chrome.storage.local.set({ evocationHistory: history, manaLevel: Math.min(100, (data.manaLevel || 0) + 5) });
-}
+// Storage handled by content.js evokeCollectedSpells()
 
 chrome.runtime.onMessage.addListener((msg, sender, respond) => {
     if (msg.type === 'DIVINE_TWEETS') { grimoire.loaded ? respond(findResonantSpell(msg.tweets, msg.enabledSpellbooks)) : loadGrimoire().then(() => respond(findResonantSpell(msg.tweets, msg.enabledSpellbooks))); return true; }
@@ -102,6 +97,6 @@ chrome.runtime.onMessage.addListener((msg, sender, respond) => {
     return false;
 });
 
-chrome.runtime.onInstalled.addListener(() => { chrome.storage.local.set({ enabled: true, batchSize: 5, enabledSpellbooks: ['story', 'zero', 'canon', 'parallel', 'plurality'], evocationHistory: [], manaLevel: 0 }); loadGrimoire(); });
+chrome.runtime.onInstalled.addListener(() => { chrome.storage.local.set({ enabled: true, batchSize: 5, enabledSpellbooks: ['story', 'zero', 'canon', 'parallel', 'plurality'], evocationHistory: [], manaLevel: 0, manaCapacity: 10, currentBarSpells: 0, totalEvokedSpells: 0 }); loadGrimoire(); });
 loadGrimoire();
 console.log('[Mage Mode] Local matching initialized');

@@ -42,7 +42,7 @@ async function loadHistory() {
     const tbody = document.getElementById('historyBody');
     tbody.innerHTML = '';
     if (history.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="empty">No mana gathered yet. Browse X to start evocating!</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="7" class="empty">No mana gathered yet. Browse X to start evocating!</td></tr>';
         return;
     }
     history.forEach(item => {
@@ -50,7 +50,8 @@ async function loadHistory() {
         const scoreClass = item.resonanceScore >= 70 ? 'score-high' : item.resonanceScore >= 40 ? 'score-med' : 'score-low';
         const time = new Date(item.timestamp);
         const timeStr = time.toLocaleDateString() + ' ' + time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-        row.innerHTML = '<td class="spell-cell">' + (item.inscription?.spell || '?') + '</td><td class="tweet-cell" title="' + escapeHtml(item.tweet) + '">' + escapeHtml(item.tweet) + '</td><td>' + escapeHtml(item.inscription?.title || 'Unknown') + '</td><td><span class="score ' + scoreClass + '">' + item.resonanceScore + '</span></td><td class="energy">' + escapeHtml(item.energy || '') + '</td><td class="timestamp">' + timeStr + '</td>';
+        const linkCell = item.tweetId ? '<td class="link-cell"><a href="https://x.com/i/status/' + item.tweetId + '" target="_blank" title="View on X">🔗</a></td>' : '<td class="link-cell">-</td>';
+        row.innerHTML = '<td class="spell-cell">' + (item.inscription?.spell || '?') + '</td><td class="tweet-cell" title="' + escapeHtml(item.tweet) + '">' + escapeHtml(item.tweet) + '</td><td>' + escapeHtml(item.inscription?.title || 'Unknown') + '</td><td><span class="score ' + scoreClass + '">' + item.resonanceScore + '</span></td><td class="energy">' + escapeHtml(item.energy || '') + '</td><td class="timestamp">' + timeStr + '</td>' + linkCell;
         tbody.appendChild(row);
     });
 }

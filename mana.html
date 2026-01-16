@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Mage Mode - Your Available Mana</title>
+    <link rel="icon" type="image/png" href="icons/mage.png">
+    <title>Just Another Mages Mana</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -54,10 +55,13 @@
         .resonate-btn { padding: 8px 16px; background: rgba(212, 175, 55, 0.2); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; color: #d4af37; cursor: pointer; font-size: 0.85rem; }
         .resonate-btn:hover { background: rgba(212, 175, 55, 0.3); }
         .resonate-btn:disabled { opacity: 0.5; cursor: wait; }
+        .link-cell { text-align: center; }
+        .link-cell a { color: #6495ed; text-decoration: none; font-size: 1.2rem; transition: all 0.2s ease; display: inline-block; }
+        .link-cell a:hover { color: #9370db; transform: scale(1.2); }
     </style>
 </head>
 <body>
-    <h1>Your Available Mana</h1>
+    <h1>Just Another Mage's Mana</h1>
     <div class="stats">
         <div class="stat"><div class="stat-value" id="totalEvocations">0</div><div class="stat-label">Evocations</div></div>
         <div class="stat"><div class="stat-value" id="totalProverbs">0</div><div class="stat-label">Spells Cast</div></div>
@@ -84,7 +88,7 @@
         </div>
     </div>
     <table id="historyTable">
-        <thead><tr><th>Spell</th><th>Focus</th><th>Inscription</th><th>Resonance</th><th>Energy</th><th>When</th></tr></thead>
+        <thead><tr><th>Spell</th><th>Focus</th><th>Inscription</th><th>Resonance</th><th>Energy</th><th>When</th><th>Link</th></tr></thead>
         <tbody id="historyBody"></tbody>
     </table>
     <script src="mana.js"></script>

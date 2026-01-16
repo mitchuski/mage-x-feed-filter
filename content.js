@@ -18,6 +18,15 @@ class MageMode {
         this.init();
     }
 
+    // Check if extension context is still valid
+    isContextValid() {
+        try {
+            return !!chrome.runtime?.id;
+        } catch (e) {
+            return false;
+        }
+    }
+
     async init() {
         const settings = await this.loadSettings();
         this.isEnabled = settings.enabled !== false;
@@ -89,6 +98,7 @@ class MageMode {
     }
 
     scanFeed() {
+        if (!this.isContextValid()) return;
         const posts = document.querySelectorAll('article[data-testid="tweet"]');
         console.log('[Mage Mode] Found', posts.length, 'posts');
 
@@ -123,6 +133,7 @@ class MageMode {
     }
 
     async processBatch() {
+        if (!this.isContextValid()) return;
         const now = Date.now();
         if (now - this.lastDivination < this.RATE_LIMIT) {
             this.batchTimeout = setTimeout(() => this.processBatch(), this.RATE_LIMIT - (now - this.lastDivination));
@@ -156,12 +167,13 @@ class MageMode {
             const result = response.result;
             if (result && result.tweetIndex !== undefined && result.inscription) {
                 const winningItem = batch[result.tweetIndex];
-                if (winningItem) {
-                    console.log('[Mage Mode] Match found! Transforming post...');
+                // Check if post is still in DOM
+                if (winningItem && winningItem.post && document.body.contains(winningItem.post)) {
+                    console.log('[Mage Mode] Match found! Adding overlay...');
                     this.addSpellOverlay(winningItem.post, result.inscription, result.energy);
-                    this.divinedCount++;
-                    this.updateManaBar(Math.min(100, this.divinedCount * 10), true);
-                    chrome.storage.local.set({ divinedCount: this.divinedCount });
+                    // No auto mana - user must reveal and evoke manually
+                } else {
+                    console.log('[Mage Mode] Post left DOM, skipping overlay');
                 }
             } else {
                 console.log('[Mage Mode] No match found in this batch');
@@ -233,9 +245,180 @@ class MageMode {
             e.stopPropagation();
             post.classList.remove('mage-filtered');
             overlay.remove();
+            // Add to spell collection sidebar
+            const tweetText = this.getPostText(post);
+            this.addToSpellSidebar(inscription, tweetText);
         });
 
         post.appendChild(overlay);
+    }
+
+    addToSpellSidebar(inscription, tweetText) {
+        let sidebar = document.querySelector('.mage-spell-sidebar');
+        if (!sidebar) {
+            sidebar = document.createElement('div');
+            sidebar.className = 'mage-spell-sidebar';
+            document.body.appendChild(sidebar);
+            this.loadTotalEvoked();
+        }
+
+        // Expand sidebar when adding spells
+        sidebar.classList.add('expanded');
+        sidebar.classList.remove('compressed');
+
+        // Add evoke button if not present
+        if (!sidebar.querySelector('.sidebar-evoke-btn')) {
+            const evokeBtn = document.createElement('button');
+            evokeBtn.className = 'sidebar-evoke-btn';
+            evokeBtn.innerHTML = '🌀';
+            evokeBtn.title = 'Evoke spells to mana';
+            evokeBtn.addEventListener('click', () => this.evokeCollectedSpells());
+            sidebar.appendChild(evokeBtn);
+        }
+
+        // Use unique ID for each reveal (timestamp + inscription id)
+        const uniqueId = inscription.id + '-' + Date.now();
+
+        const item = document.createElement('div');
+        item.className = 'mage-spell-item';
+        item.dataset.spellId = uniqueId;
+        item.dataset.spellData = JSON.stringify({ inscription, tweetText });
+        item.innerHTML = inscription.spell || '🔮';
+        item.title = inscription.title + '\n' + inscription.proverb;
+
+        // Click to remove from sidebar
+        item.addEventListener('click', () => {
+            item.style.animation = 'spell-appear 0.2s ease-in reverse';
+            setTimeout(() => {
+                item.remove();
+                this.updateSidebarCount();
+            }, 200);
+        });
+
+        // Insert before evoke button
+        const evokeBtn = sidebar.querySelector('.sidebar-evoke-btn');
+        sidebar.insertBefore(item, evokeBtn);
+        this.updateSidebarCount();
+    }
+
+    async loadTotalEvoked() {
+        const data = await chrome.storage.local.get(['totalEvokedSpells']);
+        this.totalEvoked = data.totalEvokedSpells || 0;
+        this.updateTotalBadge();
+    }
+
+    updateTotalBadge() {
+        const sidebar = document.querySelector('.mage-spell-sidebar');
+        if (!sidebar || !this.totalEvoked) return;
+
+        let badge = sidebar.querySelector('.sidebar-total-badge');
+        if (!badge && this.totalEvoked > 0) {
+            badge = document.createElement('div');
+            badge.className = 'sidebar-total-badge';
+            sidebar.insertBefore(badge, sidebar.firstChild);
+        }
+        if (badge) {
+            badge.textContent = this.totalEvoked + ' ✨';
+            badge.title = this.totalEvoked + ' spells evoked total';
+        }
+    }
+
+    async evokeCollectedSpells() {
+        const collected = this.getCollectedSpells();
+        if (collected.length === 0) return;
+
+        const sidebar = document.querySelector('.mage-spell-sidebar');
+
+        try {
+            if (!chrome.runtime?.id) { location.reload(); return; }
+            // Save collected spells to evocationHistory
+            const data = await chrome.storage.local.get(['evocationHistory', 'manaLevel', 'totalEvokedSpells', 'manaCapacity', 'currentBarSpells']);
+        const history = data.evocationHistory || [];
+        const manaCapacity = data.manaCapacity || 10;
+
+        collected.forEach(spell => {
+            history.unshift({
+                tweet: spell.tweetText?.substring(0, 280) || '',
+                tweetId: null,
+                inscription: spell.inscription,
+                resonanceScore: Math.floor(50 + Math.random() * 40),
+                energy: ['mystical', 'resonant', 'attuned'][Math.floor(Math.random() * 3)],
+                timestamp: new Date().toISOString()
+            });
+        });
+        if (history.length > 100) history.length = 100;
+
+        // Calculate mana based on capacity setting
+        const currentBarSpells = (data.currentBarSpells || 0) + collected.length;
+        const newMana = Math.min(100, Math.floor((currentBarSpells / manaCapacity) * 100));
+        this.totalEvoked = (data.totalEvokedSpells || 0) + collected.length;
+
+        await chrome.storage.local.set({
+            evocationHistory: history,
+            manaLevel: newMana,
+            totalEvokedSpells: this.totalEvoked,
+            currentBarSpells: currentBarSpells
+        });
+
+        this.updateManaBar(newMana, true);
+        this.showNotification(collected.length + ' spell' + (collected.length > 1 ? 's' : '') + ' evoked! (' + currentBarSpells + '/' + manaCapacity + ')');
+
+        // Clear spells and compress sidebar
+        this.clearSpellSidebar();
+
+        // Compress and show total
+        if (sidebar) {
+            sidebar.classList.remove('expanded');
+            sidebar.classList.add('compressed');
+            this.updateTotalBadge();
+            }
+        } catch (e) {
+            console.log('[Mage Mode] Extension reloaded, refreshing page');
+            location.reload();
+        }
+    }
+
+    updateSidebarCount() {
+        const sidebar = document.querySelector('.mage-spell-sidebar');
+        if (!sidebar) return;
+
+        let counter = sidebar.querySelector('.mage-sidebar-count');
+        const items = sidebar.querySelectorAll('.mage-spell-item');
+
+        if (items.length === 0) {
+            if (counter) counter.remove();
+            return;
+        }
+
+        if (!counter) {
+            counter = document.createElement('div');
+            counter.className = 'mage-sidebar-count';
+            const evokeBtn = sidebar.querySelector('.sidebar-evoke-btn');
+            if (evokeBtn) {
+                sidebar.insertBefore(counter, evokeBtn);
+            } else {
+                sidebar.appendChild(counter);
+            }
+        }
+        counter.textContent = items.length;
+    }
+
+    clearSpellSidebar() {
+        const sidebar = document.querySelector('.mage-spell-sidebar');
+        if (sidebar) {
+            sidebar.querySelectorAll('.mage-spell-item').forEach(item => item.remove());
+            const counter = sidebar.querySelector('.mage-sidebar-count');
+            if (counter) counter.remove();
+        }
+    }
+
+    getCollectedSpells() {
+        const sidebar = document.querySelector('.mage-spell-sidebar');
+        if (!sidebar) return [];
+        return Array.from(sidebar.querySelectorAll('.mage-spell-item')).map(item => {
+            try { return JSON.parse(item.dataset.spellData); }
+            catch(e) { return null; }
+        }).filter(Boolean);
     }
 
     createManaBar() {
@@ -263,18 +446,82 @@ class MageMode {
                 bar.classList.add('pulse');
                 setTimeout(() => bar.classList.remove('pulse'), 500);
             }
+            // Show max mana popup when full
+            if (level >= 100) {
+                this.showMaxManaPopup();
+            }
         }
+    }
+
+    showMaxManaPopup() {
+        if (document.querySelector('.mage-max-mana-popup')) return;
+        const popup = document.createElement('div');
+        popup.className = 'mage-max-mana-popup';
+        popup.innerHTML = '<span class="mana-orb">🔮</span><span class="mana-text">max mana, cast your spell</span>';
+        popup.addEventListener('click', async () => {
+            try {
+                if (!chrome.runtime?.id) { location.reload(); return; }
+                // Reset current bar spells when casting
+                await chrome.storage.local.set({ currentBarSpells: 0, manaLevel: 0 });
+                this.updateManaBar(0);
+                chrome.runtime.sendMessage({ type: 'OPEN_MANA_PAGE' });
+                popup.remove();
+            } catch (e) {
+                console.log('[Mage Mode] Extension reloaded, refreshing page');
+                location.reload();
+            }
+        });
+        document.body.appendChild(popup);
+        // Auto-hide after 10 seconds
+        setTimeout(() => {
+            if (popup.parentElement) {
+                popup.style.animation = 'notification-out 0.3s ease-in forwards';
+                setTimeout(() => popup.remove(), 300);
+            }
+        }, 10000);
     }
 
     createCastButton() {
         if (document.querySelector('.mage-cast-button')) return;
-        const btn = document.createElement('button');
-        btn.className = 'mage-cast-button';
-        btn.innerHTML = '<span>🔮</span><span class="cast-label">cast</span>';
-        btn.addEventListener('click', () => {
+
+        // Cast button - saves collected spells
+        const castBtn = document.createElement('button');
+        castBtn.className = 'mage-cast-button';
+        castBtn.innerHTML = '<span>🔮</span><span class="cast-label">cast</span>';
+        castBtn.addEventListener('click', async () => {
+            try {
+                if (!chrome.runtime?.id) { location.reload(); return; }
+                const collected = this.getCollectedSpells();
+            if (collected.length > 0) {
+                // Save collected spells to evocationHistory
+                const data = await chrome.storage.local.get(['evocationHistory', 'manaLevel']);
+                const history = data.evocationHistory || [];
+                collected.forEach(spell => {
+                    history.unshift({
+                        tweet: spell.tweetText?.substring(0, 280) || '',
+                        tweetId: null,
+                        inscription: spell.inscription,
+                        resonanceScore: Math.floor(50 + Math.random() * 40),
+                        energy: ['mystical', 'resonant', 'attuned'][Math.floor(Math.random() * 3)],
+                        timestamp: new Date().toISOString()
+                    });
+                });
+                if (history.length > 100) history.length = 100;
+                const newMana = Math.min(100, (data.manaLevel || 0) + collected.length * 5);
+                await chrome.storage.local.set({ evocationHistory: history, manaLevel: newMana });
+                this.updateManaBar(newMana, true);
+                this.showNotification(collected.length + ' spell' + (collected.length > 1 ? 's' : '') + ' cast to mana!');
+                this.clearSpellSidebar();
+            }
             chrome.runtime.sendMessage({ type: 'OPEN_MANA_PAGE' });
+            } catch (e) {
+                console.log('[Mage Mode] Extension reloaded, refreshing page');
+                location.reload();
+            }
         });
-        document.body.appendChild(btn);
+        document.body.appendChild(castBtn);
+
+
     }
 
     escapeHtml(text) {

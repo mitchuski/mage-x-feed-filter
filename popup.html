@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="icons/mage.png">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -193,7 +194,7 @@
     </style>
 </head>
 <body>
-    <h1>Mage Mode</h1>
+    <h1>just another mage, casting spells</h1>
     
     <div class="toggle-section">
         <label class="toggle">
@@ -221,6 +222,13 @@
         </div>
         <div class="mana-bar">
             <div class="mana-fill" id="manaFill" style="width: 0%"></div>
+        </div>
+        <div class="mana-capacity" style="margin-top: 12px;">
+            <label style="font-size: 0.8rem; color: #a0b0c0;">Spells per full bar</label>
+            <div class="batch-size" style="margin-top: 6px;">
+                <input type="range" id="manaCapacity" min="8" max="21" value="10">
+                <span class="batch-value" id="manaCapacityValue">10</span>
+            </div>
         </div>
     </div>
     
