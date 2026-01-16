@@ -4,14 +4,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadHistory();
 
     document.getElementById('resetMana')?.addEventListener('click', async () => {
-        await chrome.storage.local.set({ manaLevel: 0 });
+        await chrome.storage.local.set({ manaLevel: 0, currentBarSpells: 0 });
         chrome.runtime.sendMessage({ type: 'MANA_RESET' });
         alert('Mana evocated! History preserved.');
     });
 
     document.getElementById('clearHistory').addEventListener('click', async () => {
         if (confirm('Dispel all mana history?')) {
-            await chrome.storage.local.set({ evocationHistory: [], formedProverbs: [] });
+            await chrome.storage.local.set({ evocationHistory: [], formedProverbs: [], manaLevel: 0, currentBarSpells: 0 });
+            chrome.runtime.sendMessage({ type: 'DISPEL' });
             await loadHistory();
         }
     });

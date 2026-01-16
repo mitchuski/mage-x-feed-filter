@@ -64,6 +64,14 @@ class MageMode {
             }
             if (message.type === 'MANA_RESET') {
                 this.updateManaBar(0);
+                this.processedPosts.clear();
+                this.clearSpellSidebar();
+                sendResponse({ success: true });
+            }
+            if (message.type === 'DISPEL') {
+                this.updateManaBar(0);
+                this.processedPosts.clear();
+                this.clearSpellSidebar();
                 sendResponse({ success: true });
             }
             if (message.type === 'UPDATE_SETTINGS') {

@@ -94,6 +94,7 @@ chrome.runtime.onMessage.addListener((msg, sender, respond) => {
     if (msg.type === 'OPEN_MANA_PAGE') { chrome.tabs.create({ url: chrome.runtime.getURL('mana.html') }); return; }
     if (msg.type === 'CHECK_CONFIG') { respond({ configured: true }); }
     if (msg.type === 'MANA_RESET') { chrome.tabs.query({url: '*://x.com/*'}, tabs => tabs.forEach(tab => chrome.tabs.sendMessage(tab.id, {type: 'MANA_RESET'}))); }
+    if (msg.type === 'DISPEL') { chrome.tabs.query({url: '*://x.com/*'}, tabs => tabs.forEach(tab => chrome.tabs.sendMessage(tab.id, {type: 'DISPEL'}))); }
     return false;
 });
 
