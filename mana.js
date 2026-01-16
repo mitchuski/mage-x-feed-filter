@@ -176,8 +176,11 @@ async function resonateSpell() {
             const cls = s >= 70 ? 'score-high' : s >= 40 ? 'score-med' : 'score-low';
             resultHtml += '<span class="score ' + cls + '">' + s + '</span> ' + (proverbs[i] || '') + '<br>';
         });
-        output.innerHTML = resultHtml;
-        refineInput.value = proverbs.join(String.fromCharCode(10));
+        let resDiv = document.getElementById('resonanceResults');
+        if (!resDiv) { resDiv = document.createElement('div'); resDiv.id = 'resonanceResults'; document.querySelector('.refine-section').appendChild(resDiv); }
+        resDiv.innerHTML = resultHtml;
+        resDiv.style.display = 'block';
+        // proverbs stay in refineInput as-is
     } catch (error) {
         output.textContent = 'Error resonating: ' + error.message;
     } finally {
