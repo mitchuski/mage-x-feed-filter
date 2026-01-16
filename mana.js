@@ -170,15 +170,13 @@ async function resonateSpell() {
         });
         const json = await response.json();
         const scores = (json.choices?.[0]?.message?.content || '').match(/\d+/g) || [];
-        let resultHtml = '';
+        let resultHtml = '<strong>Resonance Scores:</strong><br>';
         scores.forEach((score, i) => {
             const s = Math.min(100, parseInt(score));
             const cls = s >= 70 ? 'score-high' : s >= 40 ? 'score-med' : 'score-low';
             resultHtml += '<span class="score ' + cls + '">' + s + '</span> ' + (proverbs[i] || '') + '<br>';
         });
         output.innerHTML = resultHtml;
-        // Keep original proverbs in refine input (without scores)
-        refineInput.value = proverbs.join(String.fromCharCode(10));
     } catch (error) {
         output.textContent = 'Error resonating: ' + error.message;
     } finally {

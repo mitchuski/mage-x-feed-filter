@@ -245,16 +245,15 @@ class MageMode {
             e.stopPropagation();
             post.classList.remove('mage-filtered');
             overlay.remove();
-            // Add to spell collection sidebar with tweetId for mana page links
+            // Add to spell collection sidebar
             const tweetText = this.getPostText(post);
-            const tweetId = this.getPostId(post);
-            this.addToSpellSidebar(inscription, tweetText, tweetId);
+            this.addToSpellSidebar(inscription, tweetText);
         });
 
         post.appendChild(overlay);
     }
 
-    addToSpellSidebar(inscription, tweetText, tweetId) {
+    addToSpellSidebar(inscription, tweetText) {
         let sidebar = document.querySelector('.mage-spell-sidebar');
         if (!sidebar) {
             sidebar = document.createElement('div');
@@ -283,7 +282,7 @@ class MageMode {
         const item = document.createElement('div');
         item.className = 'mage-spell-item';
         item.dataset.spellId = uniqueId;
-        item.dataset.spellData = JSON.stringify({ inscription, tweetText, tweetId });
+        item.dataset.spellData = JSON.stringify({ inscription, tweetText });
         item.innerHTML = inscription.spell || '🔮';
         item.title = inscription.title + '\n' + inscription.proverb;
 
@@ -340,7 +339,7 @@ class MageMode {
         collected.forEach(spell => {
             history.unshift({
                 tweet: spell.tweetText?.substring(0, 280) || '',
-                tweetId: spell.tweetId || null,
+                tweetId: null,
                 inscription: spell.inscription,
                 resonanceScore: Math.floor(50 + Math.random() * 40),
                 energy: ['mystical', 'resonant', 'attuned'][Math.floor(Math.random() * 3)],
@@ -500,7 +499,7 @@ class MageMode {
                 collected.forEach(spell => {
                     history.unshift({
                         tweet: spell.tweetText?.substring(0, 280) || '',
-                        tweetId: spell.tweetId || null,
+                        tweetId: null,
                         inscription: spell.inscription,
                         resonanceScore: Math.floor(50 + Math.random() * 40),
                         energy: ['mystical', 'resonant', 'attuned'][Math.floor(Math.random() * 3)],
